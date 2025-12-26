@@ -4,7 +4,7 @@
  * Author: Nest N Thrive
  * Author URI: https://nestnthrive.com
  * Description: A custom WordPress theme for Nest N Thrive - thoughtful home product recommendations.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Requires at least: 6.0
  * Tested up to: 6.4
  * Requires PHP: 8.0
@@ -1262,7 +1262,7 @@ a:focus {
         padding: 6rem 0;
     }
     
-    .nnt-section__header {
+    .nnt-section__header:not(.nnt-section__header--centered) {
         flex-direction: row;
         align-items: flex-end;
         justify-content: space-between;
@@ -1354,6 +1354,10 @@ a:focus {
     width: 100%;
     height: 100%;
     background: linear-gradient(135deg, #d6d3d1, #a8a29e);
+}
+
+.nnt-card--overlay .nnt-card__placeholder {
+    background: linear-gradient(135deg, #44403c, #292524);
 }
 
 .nnt-card__badge {
