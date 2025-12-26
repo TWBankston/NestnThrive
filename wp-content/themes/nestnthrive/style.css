@@ -4,7 +4,7 @@
  * Author: Nest N Thrive
  * Author URI: https://nestnthrive.com
  * Description: A custom WordPress theme for Nest N Thrive - thoughtful home product recommendations.
- * Version: 1.0.1
+ * Version: 1.0.2
  * Requires at least: 6.0
  * Tested up to: 6.4
  * Requires PHP: 8.0
@@ -1800,21 +1800,53 @@ a:focus {
     }
 }
 
+/* Room/Goal Hub Sections */
+.nnt-section--goals,
+.nnt-section--rooms {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.nnt-section--goals .nnt-section__header--centered,
+.nnt-section--rooms .nnt-section__header--centered {
+    margin-bottom: 3rem;
+}
+
+.nnt-section--other-rooms,
+.nnt-section--other-goals {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.nnt-section--other-rooms > .nnt-container > .nnt-section__title,
+.nnt-section--other-goals > .nnt-container > .nnt-section__title {
+    margin-bottom: 2rem;
+}
+
 /* Room/Goal Philosophy */
-.nnt-room-philosophy {
+.nnt-section--philosophy {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.nnt-room-philosophy,
+.nnt-goal-philosophy {
     text-align: center;
 }
 
-.nnt-room-philosophy__icon {
+.nnt-room-philosophy__icon,
+.nnt-goal-philosophy__icon {
     color: var(--wp--preset--color--warm-gold);
     opacity: 0.8;
     margin-bottom: 1.5rem;
 }
 
-.nnt-room-philosophy__title {
+.nnt-room-philosophy__title,
+.nnt-goal-philosophy__title {
     font-size: clamp(1.75rem, 4vw, 2rem);
     font-weight: 500;
     margin: 0 0 1.5rem;
+    color: var(--wp--preset--color--off-white);
 }
 
 .nnt-room-philosophy__content {
