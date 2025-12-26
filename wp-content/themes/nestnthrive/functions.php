@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'NNT_THEME_VERSION', '2.0.0' );
+define( 'NNT_THEME_VERSION', '2.0.1' );
 
 /**
  * Theme setup.

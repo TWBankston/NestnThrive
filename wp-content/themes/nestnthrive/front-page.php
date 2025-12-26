@@ -146,17 +146,43 @@ $deals       = get_posts( array(
 <?php if ( ! empty( $guides ) ) : ?>
 <section class="nnt-section nnt-section--stone">
     <div class="nnt-container">
-        <div class="nnt-section__header nnt-reveal">
+        <div class="nnt-section__header nnt-section__header--centered nnt-reveal">
             <h2 class="nnt-section__title"><?php esc_html_e( 'Setup Guides', 'nestnthrive' ); ?></h2>
             <a href="<?php echo esc_url( get_post_type_archive_link( 'nnt_guide' ) ); ?>" class="nnt-section__link">
                 <?php esc_html_e( 'View all guides', 'nestnthrive' ); ?>
             </a>
         </div>
 
-        <div class="nnt-scroll-container nnt-hide-scroll nnt-reveal nnt-delay-100">
-            <?php foreach ( $guides as $guide ) : ?>
-                <?php get_template_part( 'template-parts/components/card-guide', null, array( 'post' => $guide ) ); ?>
-            <?php endforeach; ?>
+        <div class="nnt-guides-masonry nnt-reveal nnt-delay-100">
+            <?php 
+            $guide_index = 0;
+            foreach ( $guides as $guide ) : 
+                $is_featured = ( $guide_index === 2 ); // 3rd card is featured (larger)
+                $room_terms = wp_get_post_terms( $guide->ID, 'nnt_room_tax' );
+                $tag = ! is_wp_error( $room_terms ) && ! empty( $room_terms ) ? $room_terms[0]->name : '';
+                $image_id = get_post_thumbnail_id( $guide );
+            ?>
+                <a href="<?php echo esc_url( get_permalink( $guide ) ); ?>" class="nnt-guide-masonry-card<?php echo $is_featured ? ' nnt-guide-masonry-card--featured' : ''; ?>">
+                    <div class="nnt-guide-masonry-card__image">
+                        <?php if ( $image_id ) : ?>
+                            <?php echo wp_get_attachment_image( $image_id, $is_featured ? 'nnt-featured' : 'nnt-card' ); ?>
+                        <?php else : ?>
+                            <div style="width: 100%; height: 100%; background: var(--nnt-stone-200);"></div>
+                        <?php endif; ?>
+                        <?php if ( $tag ) : ?>
+                            <span class="nnt-guide-masonry-card__tag"><?php echo esc_html( $tag ); ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="nnt-guide-masonry-card__content">
+                        <h3 class="nnt-guide-masonry-card__title"><?php echo esc_html( get_the_title( $guide ) ); ?></h3>
+                        <p class="nnt-guide-masonry-card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt( $guide ), 12 ) ); ?></p>
+                        <span class="nnt-guide-masonry-card__link"><?php esc_html_e( 'Read Guide →', 'nestnthrive' ); ?></span>
+                    </div>
+                </a>
+            <?php 
+                $guide_index++;
+            endforeach; 
+            ?>
         </div>
     </div>
 </section>

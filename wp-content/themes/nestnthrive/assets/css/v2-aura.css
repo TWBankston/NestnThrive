@@ -229,6 +229,20 @@ body {
     color: var(--nnt-forest-dark);
 }
 
+.nnt-section__header--centered {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .nnt-section__header--centered {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-end;
+    }
+}
+
 /* Utility classes */
 .nnt-mb-12 {
     margin-bottom: 3rem;
@@ -536,16 +550,26 @@ body {
 
 .nnt-hero__floating-card {
     position: absolute;
-    bottom: -1rem;
-    left: -1rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
     background: #fff;
     padding: 1rem;
     border-radius: 0.75rem;
     box-shadow: var(--nnt-shadow-lg);
-    max-width: 220px;
+    max-width: 240px;
+    z-index: 10;
 }
 
 @media (max-width: 1023px) {
+    .nnt-hero__floating-card {
+        bottom: 1rem;
+        left: 1rem;
+        max-width: 200px;
+        padding: 0.75rem;
+    }
+}
+
+@media (max-width: 640px) {
     .nnt-hero__floating-card {
         display: none;
     }
@@ -650,7 +674,7 @@ body {
 }
 
 .nnt-card-goal:hover {
-    border-color: var(--nnt-stone-300);
+    border-color: var(--nnt-forest);
     box-shadow: var(--nnt-shadow-md);
 }
 
@@ -664,6 +688,12 @@ body {
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
+    transition: all var(--nnt-transition);
+}
+
+.nnt-card-goal:hover .nnt-card-goal__icon {
+    background: var(--nnt-forest);
+    color: #fff;
 }
 
 .nnt-card-goal__title {
@@ -825,6 +855,123 @@ body {
     font-weight: 500;
     color: var(--nnt-forest);
     margin-top: 0.5rem;
+}
+
+/* ============================================================
+   GUIDES MASONRY GRID
+   ============================================================ */
+.nnt-guides-masonry {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .nnt-guides-masonry {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: minmax(200px, auto);
+    }
+}
+
+.nnt-guide-masonry-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    text-decoration: none;
+    transition: all var(--nnt-transition);
+}
+
+.nnt-guide-masonry-card:hover {
+    box-shadow: var(--nnt-shadow-md);
+}
+
+.nnt-guide-masonry-card--featured {
+    grid-row: span 2;
+}
+
+@media (max-width: 767px) {
+    .nnt-guide-masonry-card--featured {
+        grid-row: span 1;
+    }
+}
+
+.nnt-guide-masonry-card__image {
+    position: relative;
+    flex: 1;
+    min-height: 150px;
+    overflow: hidden;
+}
+
+.nnt-guide-masonry-card--featured .nnt-guide-masonry-card__image {
+    min-height: 300px;
+}
+
+@media (max-width: 767px) {
+    .nnt-guide-masonry-card--featured .nnt-guide-masonry-card__image {
+        min-height: 180px;
+    }
+}
+
+.nnt-guide-masonry-card__image img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.nnt-guide-masonry-card:hover .nnt-guide-masonry-card__image img {
+    transform: scale(1.05);
+}
+
+.nnt-guide-masonry-card__tag {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.625rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--nnt-stone-600);
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 0.25rem;
+}
+
+.nnt-guide-masonry-card__content {
+    padding: 1rem;
+}
+
+.nnt-guide-masonry-card__title {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--nnt-stone-900);
+    margin-bottom: 0.375rem;
+    line-height: 1.4;
+}
+
+.nnt-guide-masonry-card:hover .nnt-guide-masonry-card__title {
+    color: var(--nnt-forest);
+}
+
+.nnt-guide-masonry-card__excerpt {
+    font-size: 0.8125rem;
+    color: var(--nnt-stone-500);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.nnt-guide-masonry-card__link {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--nnt-stone-600);
+}
+
+.nnt-guide-masonry-card:hover .nnt-guide-masonry-card__link {
+    color: var(--nnt-forest);
 }
 
 /* ============================================================
