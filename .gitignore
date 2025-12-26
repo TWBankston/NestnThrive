@@ -26,10 +26,14 @@ Desktop.ini
 # Node modules (if using build tools)
 node_modules/
 
-# Environment files
+# Environment files (deployment secrets)
 .env
 .env.local
 .env.*.local
+.env.production
+
+# Deployment secrets (local config with credentials)
+deploy/config.local.ps1
 
 # Logs
 *.log
