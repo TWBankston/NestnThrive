@@ -1,13 +1,13 @@
 <?php
 /**
- * Archive Guide Template - V2 Aura
+ * Archive Room Template - V2 Aura
  *
  * @package NestNThrive
  */
 
 get_header();
 
-$guides = nnt_get_latest_guides( 12 );
+$rooms = nnt_get_all_rooms( -1 );
 ?>
 
 <!-- HERO -->
@@ -18,27 +18,27 @@ $guides = nnt_get_latest_guides( 12 );
             get_template_part( 'template-parts/components/breadcrumbs-v2', null, array(
                 'items' => array(
                     array( 'label' => __( 'Home', 'nestnthrive' ), 'url' => home_url( '/' ) ),
-                    array( 'label' => __( 'Guides', 'nestnthrive' ) ),
+                    array( 'label' => __( 'Spaces', 'nestnthrive' ) ),
                 ),
             ) );
             ?>
             
-            <h1 class="nnt-hero__title" style="margin-top: 1rem;"><?php esc_html_e( 'Setup Guides', 'nestnthrive' ); ?></h1>
+            <h1 class="nnt-hero__title" style="margin-top: 1rem;"><?php esc_html_e( 'Explore Spaces', 'nestnthrive' ); ?></h1>
             
             <p class="nnt-hero__desc" style="max-width: 36rem; margin: 1rem auto;">
-                <?php esc_html_e( 'Step-by-step guides to help you get things right the first time.', 'nestnthrive' ); ?>
+                <?php esc_html_e( 'Find inspiration and practical solutions for every room in your home.', 'nestnthrive' ); ?>
             </p>
         </div>
     </div>
 </section>
 
-<!-- GUIDES GRID -->
-<?php if ( ! empty( $guides ) ) : ?>
+<!-- SPACES GRID -->
+<?php if ( ! empty( $rooms ) ) : ?>
 <section class="nnt-section nnt-section--white">
     <div class="nnt-container">
-        <div class="nnt-grid nnt-grid--4 nnt-reveal">
-            <?php foreach ( $guides as $guide ) : ?>
-                <?php get_template_part( 'template-parts/components/card-guide', null, array( 'post' => $guide ) ); ?>
+        <div class="nnt-grid nnt-grid--3 nnt-reveal">
+            <?php foreach ( $rooms as $room ) : ?>
+                <?php get_template_part( 'template-parts/components/card-space', null, array( 'post' => $room ) ); ?>
             <?php endforeach; ?>
         </div>
     </div>
@@ -47,7 +47,7 @@ $guides = nnt_get_latest_guides( 12 );
 <section class="nnt-section nnt-section--white">
     <div class="nnt-container">
         <div class="nnt-reveal" style="text-align: center; padding: 4rem 2rem;">
-            <p style="color: var(--nnt-stone-500);"><?php esc_html_e( 'No guides found. Check back soon!', 'nestnthrive' ); ?></p>
+            <p style="color: var(--nnt-stone-500);"><?php esc_html_e( 'No spaces found. Check back soon!', 'nestnthrive' ); ?></p>
         </div>
     </div>
 </section>
@@ -57,3 +57,4 @@ $guides = nnt_get_latest_guides( 12 );
 <?php get_template_part( 'template-parts/components/newsletter-v2' ); ?>
 
 <?php get_footer(); ?>
+

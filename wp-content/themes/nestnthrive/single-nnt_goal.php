@@ -1,221 +1,152 @@
 <?php
 /**
- * Single Goal Hub Template
+ * Single Goal Template - V2 Aura
  *
  * @package NestNThrive
  */
 
-// Prevent direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
-
 get_header();
 
-// Get current goal.
-$goal_id = get_the_ID();
-
-// Get hero content with fallbacks.
-$hero = nnt_get_hero_content( $goal_id );
-
-// Get featured items.
-$featured_collections = nnt_get_featured_items( $goal_id, 'nnt_featured_collections', 'nnt_collection' );
-$featured_guides      = nnt_get_featured_items( $goal_id, 'nnt_featured_guides', 'nnt_guide' );
-$featured_rooms       = nnt_get_featured_terms( $goal_id, 'nnt_featured_rooms', 'nnt_room_tax' );
-
-// Get all guides for this goal.
-$all_guides = nnt_get_guides_for_goal( $goal_id, 12 );
-
-// Get other goals.
-$other_goals = nnt_get_other_goals( $goal_id, 4 );
-
-// Get featured image.
-$hero_image = get_the_post_thumbnail_url( $goal_id, 'nnt-hero' );
+$post_id         = get_the_ID();
+$title           = get_the_title();
+$excerpt         = get_the_excerpt();
+$image_id        = get_post_thumbnail_id();
+$featured_cols   = nnt_get_featured_items( $post_id, 'nnt_featured_collections', 'nnt_collection' );
+$featured_guides = nnt_get_featured_items( $post_id, 'nnt_featured_guides', 'nnt_guide' );
+$featured_rooms  = nnt_get_featured_terms( $post_id, 'nnt_featured_rooms', 'nnt_room_tax' );
+$all_guides      = nnt_get_guides_for_goal( get_post(), 4 );
+$other_goals     = nnt_get_other_goals( $post_id, 4 );
 ?>
 
-<!-- GOAL HERO -->
-<section class="nnt-hub-hero">
-    <div class="nnt-hub-hero__bg"></div>
-    
+<!-- HERO -->
+<section class="nnt-section nnt-section--hero" style="overflow: hidden;">
     <div class="nnt-container">
-        <div class="nnt-hub-hero__grid">
-            <div class="nnt-hub-hero__content">
-                <?php get_template_part( 'template-parts/components/breadcrumbs', null, array(
+        <div class="nnt-hero">
+            <div class="nnt-hero__content nnt-reveal">
+                <?php
+                get_template_part( 'template-parts/components/breadcrumbs-v2', null, array(
                     'items' => array(
-                        array( 'label' => __( 'Goal Hub', 'nestnthrive' ), 'url' => null ),
+                        array( 'label' => __( 'Home', 'nestnthrive' ), 'url' => home_url( '/' ) ),
+                        array( 'label' => __( 'Goals', 'nestnthrive' ), 'url' => get_post_type_archive_link( 'nnt_goal' ) ),
+                        array( 'label' => $title ),
                     ),
-                ) ); ?>
+                ) );
+                ?>
                 
-                <h1 class="nnt-hub-hero__title"><?php echo esc_html( $hero['title'] ); ?></h1>
+                <h1 class="nnt-hero__title"><?php echo esc_html( $title ); ?></h1>
                 
-                <?php if ( $hero['subtitle'] ) : ?>
-                    <p class="nnt-hub-hero__subtitle"><?php echo esc_html( $hero['subtitle'] ); ?></p>
+                <?php if ( $excerpt ) : ?>
+                <p class="nnt-hero__desc"><?php echo esc_html( $excerpt ); ?></p>
                 <?php endif; ?>
                 
-                <?php if ( $hero['supporting_line'] ) : ?>
-                    <div class="nnt-hub-hero__quote">
-                        <p><?php echo esc_html( $hero['supporting_line'] ); ?></p>
-                    </div>
+                <div class="nnt-hero__actions">
+                    <a href="#reviews" class="nnt-btn nnt-btn--primary">
+                        <?php esc_html_e( 'Browse Reviews', 'nestnthrive' ); ?>
+                    </a>
+                    <a href="#spaces" class="nnt-btn nnt-btn--secondary">
+                        <?php esc_html_e( 'Explore Spaces', 'nestnthrive' ); ?>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nnt-hero__image nnt-reveal nnt-delay-200 group">
+                <?php if ( $image_id ) : ?>
+                    <?php echo wp_get_attachment_image( $image_id, 'nnt-hero', false, array( 'class' => 'nnt-img-zoom' ) ); ?>
+                <?php else : ?>
+                    <div style="width: 100%; height: 100%; background: var(--nnt-stone-200);"></div>
                 <?php endif; ?>
             </div>
-            
-            <?php if ( $hero_image ) : ?>
-                <div class="nnt-hub-hero__image-wrap">
-                    <div class="nnt-hub-hero__image">
-                        <img src="<?php echo esc_url( $hero_image ); ?>" alt="<?php echo esc_attr( $hero['title'] ); ?>">
-                        <div class="nnt-hub-hero__image-overlay"></div>
-                    </div>
-                </div>
-            <?php endif; ?>
         </div>
     </div>
 </section>
 
-<!-- FEATURED COLLECTIONS -->
-<?php if ( ! empty( $featured_collections ) ) : ?>
-<section class="nnt-section nnt-section--collections">
+<!-- ESSENTIAL PICKS -->
+<?php if ( ! empty( $featured_cols ) ) : ?>
+<section id="reviews" class="nnt-section nnt-section--white">
     <div class="nnt-container">
-        <header class="nnt-section__header">
-            <div class="nnt-section__header-left">
-                <h2 class="nnt-section__title"><?php printf( esc_html__( 'Essential Picks for Better %s', 'nestnthrive' ), esc_html( get_the_title() ) ); ?></h2>
-                <p class="nnt-section__subtitle"><?php esc_html_e( 'Curated tools that solve specific problems.', 'nestnthrive' ); ?></p>
-            </div>
-        </header>
-        
+        <div class="nnt-reveal">
+            <h2 class="nnt-section__title"><?php echo esc_html( sprintf( __( 'Essential Picks for %s', 'nestnthrive' ), $title ) ); ?></h2>
+            <p class="nnt-section__subtitle nnt-mb-12"><?php esc_html_e( 'The foundational gear we\'ve tested and rely on to keep the chaos at bay.', 'nestnthrive' ); ?></p>
+        </div>
+
         <div class="nnt-grid nnt-grid--3">
-            <?php foreach ( $featured_collections as $collection ) : ?>
-                <?php
-                get_template_part( 'template-parts/components/card', null, array(
-                    'item'         => $collection,
-                    'type'         => 'collection',
-                    'style'        => 'featured',
-                    'show_excerpt' => true,
-                    'image_size'   => 'nnt-card',
-                ) );
-                ?>
+            <?php foreach ( $featured_cols as $col ) : ?>
+                <div class="nnt-reveal nnt-delay-100">
+                    <?php get_template_part( 'template-parts/components/card-review', null, array( 'post' => $col ) ); ?>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
 <?php endif; ?>
 
-<!-- EXPLORE BY ROOM -->
+<!-- EXPLORE BY SPACE -->
 <?php if ( ! empty( $featured_rooms ) ) : ?>
-<section class="nnt-section nnt-section--white nnt-section--rooms">
+<section id="spaces" class="nnt-section nnt-section--stone">
     <div class="nnt-container">
-        <header class="nnt-section__header nnt-section__header--centered">
-            <span class="nnt-section__kicker"><?php esc_html_e( 'Context', 'nestnthrive' ); ?></span>
-            <h2 class="nnt-section__title"><?php esc_html_e( 'Explore by Room', 'nestnthrive' ); ?></h2>
-            <p class="nnt-section__subtitle"><?php printf( esc_html__( '%s looks different depending on the space. Start where you live.', 'nestnthrive' ), esc_html( get_the_title() ) ); ?></p>
-        </header>
-        
-        <div class="nnt-grid nnt-grid--4">
-            <?php foreach ( $featured_rooms as $room_term ) : ?>
-                <?php
-                get_template_part( 'template-parts/components/card', null, array(
-                    'item'         => $room_term,
-                    'type'         => 'room-term',
-                    'style'        => 'overlay',
-                    'show_excerpt' => false,
+        <div class="nnt-section__header nnt-reveal">
+            <div>
+                <h2 class="nnt-section__title"><?php esc_html_e( 'Explore by Space', 'nestnthrive' ); ?></h2>
+                <p class="nnt-section__subtitle"><?php esc_html_e( 'Tackle the clutter, one room at a time.', 'nestnthrive' ); ?></p>
+            </div>
+        </div>
+
+        <div class="nnt-grid nnt-grid--4 nnt-reveal nnt-delay-100">
+            <?php foreach ( $featured_rooms as $room_term ) : 
+                $room_posts = get_posts( array(
+                    'post_type'      => 'nnt_room',
+                    'name'           => $room_term->slug,
+                    'posts_per_page' => 1,
                 ) );
-                ?>
+                if ( ! empty( $room_posts ) ) :
+            ?>
+                <?php get_template_part( 'template-parts/components/card-space', null, array( 'post' => $room_posts[0], 'size' => 'small' ) ); ?>
+            <?php 
+                endif;
+            endforeach; 
+            ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+
+<!-- GUIDES TO HELP YOU -->
+<?php if ( ! empty( $featured_guides ) ) : ?>
+<section class="nnt-section nnt-section--white">
+    <div class="nnt-container">
+        <div class="nnt-section__header nnt-reveal">
+            <h2 class="nnt-section__title"><?php esc_html_e( 'Guides to Help You Get There', 'nestnthrive' ); ?></h2>
+            <a href="#all-guides" class="nnt-section__link"><?php esc_html_e( 'See all guides', 'nestnthrive' ); ?></a>
+        </div>
+
+        <div class="nnt-grid nnt-grid--3 nnt-reveal nnt-delay-100">
+            <?php foreach ( $featured_guides as $guide ) : ?>
+                <?php get_template_part( 'template-parts/components/card-guide', null, array( 'post' => $guide ) ); ?>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
 <?php endif; ?>
 
-<!-- FEATURED GUIDES -->
-<?php if ( ! empty( $featured_guides ) ) : ?>
-<section class="nnt-section nnt-section--guides">
-    <div class="nnt-container">
-        <h2 class="nnt-section__title nnt-section__title--bordered"><?php esc_html_e( 'Guides to Help You Get There', 'nestnthrive' ); ?></h2>
-        
-        <div class="nnt-guides-featured">
-            <?php 
-            $first_guide = array_shift( $featured_guides );
-            if ( $first_guide ) :
-            ?>
-                <!-- Hero Guide -->
-                <article class="nnt-guide-hero">
-                    <?php $guide_image = get_the_post_thumbnail_url( $first_guide->ID, 'nnt-featured' ); ?>
-                    <?php if ( $guide_image ) : ?>
-                        <div class="nnt-guide-hero__image">
-                            <img src="<?php echo esc_url( $guide_image ); ?>" alt="<?php echo esc_attr( get_the_title( $first_guide ) ); ?>">
-                        </div>
-                    <?php endif; ?>
-                    <div class="nnt-guide-hero__content">
-                        <div class="nnt-guide-hero__meta">
-                            <?php $kicker = get_post_meta( $first_guide->ID, 'nnt_guide_kicker', true ); ?>
-                            <?php if ( $kicker ) : ?>
-                                <span class="nnt-kicker"><?php echo esc_html( $kicker ); ?></span>
-                            <?php endif; ?>
-                            <span class="nnt-meta__item"><?php echo esc_html( nnt_get_reading_time( $first_guide->ID ) ); ?></span>
-                        </div>
-                        <h3 class="nnt-guide-hero__title">
-                            <a href="<?php echo esc_url( get_permalink( $first_guide ) ); ?>">
-                                <?php echo esc_html( get_the_title( $first_guide ) ); ?>
-                            </a>
-                        </h3>
-                        <p class="nnt-guide-hero__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt( $first_guide ), 30 ) ); ?></p>
-                        <a href="<?php echo esc_url( get_permalink( $first_guide ) ); ?>" class="nnt-button nnt-button--primary">
-                            <?php esc_html_e( 'Read the Guide', 'nestnthrive' ); ?>
-                        </a>
-                    </div>
-                </article>
-            <?php endif; ?>
-            
-            <?php if ( ! empty( $featured_guides ) ) : ?>
-                <div class="nnt-guides-list">
-                    <?php foreach ( $featured_guides as $guide ) : ?>
-                        <?php
-                        get_template_part( 'template-parts/components/card', null, array(
-                            'item'         => $guide,
-                            'type'         => 'guide',
-                            'style'        => 'list',
-                            'show_meta'    => true,
-                            'show_excerpt' => true,
-                        ) );
-                        ?>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-        </div>
-    </div>
-</section>
-<?php endif; ?>
-
-<!-- GOAL PHILOSOPHY -->
-<section class="nnt-section nnt-section--dark nnt-section--philosophy">
-    <div class="nnt-container nnt-container--narrow">
-        <div class="nnt-room-philosophy">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="nnt-room-philosophy__icon"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-            <h2 class="nnt-room-philosophy__title"><?php printf( esc_html__( 'What Makes %s Actually Work?', 'nestnthrive' ), esc_html( get_the_title() ) ); ?></h2>
-            <div class="nnt-room-philosophy__content">
-                <?php the_content(); ?>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ALL GUIDES LIST -->
+<!-- ALL GUIDES -->
 <?php if ( ! empty( $all_guides ) ) : ?>
-<section class="nnt-section nnt-section--all-guides">
+<section id="all-guides" class="nnt-section nnt-section--stone">
     <div class="nnt-container">
-        <header class="nnt-section__header">
-            <h2 class="nnt-section__title"><?php printf( esc_html__( 'All %s Guides', 'nestnthrive' ), esc_html( get_the_title() ) ); ?></h2>
-        </header>
-        
-        <div class="nnt-grid nnt-grid--3">
+        <div class="nnt-reveal" style="border-bottom: 1px solid var(--nnt-stone-200); padding-bottom: 1rem; margin-bottom: 3rem;">
+            <h2 class="nnt-section__title"><?php echo esc_html( sprintf( __( 'All %s Guides', 'nestnthrive' ), $title ) ); ?></h2>
+        </div>
+
+        <div class="nnt-grid nnt-grid--4 nnt-reveal nnt-delay-100">
             <?php foreach ( $all_guides as $guide ) : ?>
-                <?php
-                get_template_part( 'template-parts/components/card', null, array(
-                    'item'         => $guide,
-                    'type'         => 'guide',
-                    'style'        => 'text-only',
-                    'show_excerpt' => true,
-                ) );
-                ?>
+                <a href="<?php echo esc_url( get_permalink( $guide ) ); ?>" class="group" style="text-decoration: none;">
+                    <div style="aspect-ratio: 3/2; border-radius: 0.75rem; overflow: hidden; background: var(--nnt-stone-200); margin-bottom: 0.75rem;" class="nnt-img-zoom-container">
+                        <?php echo get_the_post_thumbnail( $guide, 'nnt-card', array( 'class' => 'nnt-img-zoom', 'style' => 'width: 100%; height: 100%; object-fit: cover;' ) ); ?>
+                    </div>
+                    <div style="font-size: 0.625rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--nnt-stone-400); margin-bottom: 0.25rem;">
+                        <?php echo esc_html( $title ); ?>
+                    </div>
+                    <h3 style="font-size: 1rem; font-weight: 500; color: var(--nnt-stone-900); transition: color 0.2s;"><?php echo esc_html( get_the_title( $guide ) ); ?></h3>
+                </a>
             <?php endforeach; ?>
         </div>
     </div>
@@ -224,38 +155,25 @@ $hero_image = get_the_post_thumbnail_url( $goal_id, 'nnt-hero' );
 
 <!-- EXPLORE OTHER GOALS -->
 <?php if ( ! empty( $other_goals ) ) : ?>
-<section class="nnt-section nnt-section--white nnt-section--other-goals">
+<section class="nnt-section nnt-section--white" style="border-top: 1px solid var(--nnt-stone-100);">
     <div class="nnt-container">
-        <h2 class="nnt-section__title"><?php esc_html_e( 'Explore Other Goals', 'nestnthrive' ); ?></h2>
-        
-        <div class="nnt-grid nnt-grid--4">
+        <div class="nnt-section__header nnt-reveal">
+            <h2 class="nnt-section__title"><?php esc_html_e( 'Explore Other Goals', 'nestnthrive' ); ?></h2>
+        </div>
+
+        <div class="nnt-grid nnt-grid--4 nnt-reveal nnt-delay-100">
             <?php foreach ( $other_goals as $goal ) : ?>
-                <?php
-                get_template_part( 'template-parts/components/card', null, array(
-                    'item'         => $goal,
-                    'type'         => 'goal',
-                    'style'        => 'goal-tile',
-                    'show_excerpt' => false,
-                ) );
-                ?>
+                <?php get_template_part( 'template-parts/components/card-goal', null, array( 'post' => $goal ) ); ?>
             <?php endforeach; ?>
         </div>
     </div>
 </section>
 <?php endif; ?>
 
-<!-- EMAIL CTA -->
-<section class="nnt-section nnt-section--newsletter">
-    <div class="nnt-container nnt-container--narrow">
-        <?php
-        get_template_part( 'template-parts/components/newsletter-form', null, array(
-            'style'    => 'compact',
-            'title'    => __( 'Clearer spaces start with better decisions.', 'nestnthrive' ),
-            'subtitle' => __( 'Join 12,000+ others receiving our weekly curation.', 'nestnthrive' ),
-        ) );
-        ?>
-    </div>
-</section>
+<!-- TRUST BLOCK -->
+<?php get_template_part( 'template-parts/components/trust-block' ); ?>
 
-<?php
-get_footer();
+<!-- NEWSLETTER -->
+<?php get_template_part( 'template-parts/components/newsletter-v2' ); ?>
+
+<?php get_footer(); ?>

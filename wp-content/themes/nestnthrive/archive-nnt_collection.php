@@ -1,95 +1,59 @@
 <?php
 /**
- * Collection Archive Template
+ * Archive Collection Template - V2 Aura
  *
  * @package NestNThrive
  */
 
 get_header();
+
+$collections = nnt_get_latest_collections( 12 );
 ?>
 
-<!-- Hero Section -->
-<section class="nnt-section nnt-section--hero nnt-archive-hero">
+<!-- HERO -->
+<section class="nnt-section nnt-section--hero" style="overflow: hidden;">
     <div class="nnt-container">
-        <div class="nnt-archive-hero__content">
-            <h1 class="nnt-archive-hero__title"><?php esc_html_e( 'Collections', 'nestnthrive' ); ?></h1>
-            <p class="nnt-archive-hero__subtitle">
-                <?php esc_html_e( 'Curated product roundups to simplify your shopping and help you find the best options.', 'nestnthrive' ); ?>
+        <div class="nnt-reveal" style="text-align: center; max-width: 48rem; margin: 0 auto;">
+            <?php
+            get_template_part( 'template-parts/components/breadcrumbs-v2', null, array(
+                'items' => array(
+                    array( 'label' => __( 'Home', 'nestnthrive' ), 'url' => home_url( '/' ) ),
+                    array( 'label' => __( 'Reviews', 'nestnthrive' ) ),
+                ),
+            ) );
+            ?>
+            
+            <h1 class="nnt-hero__title" style="margin-top: 1rem;"><?php esc_html_e( 'Product Reviews', 'nestnthrive' ); ?></h1>
+            
+            <p class="nnt-hero__desc" style="max-width: 36rem; margin: 1rem auto;">
+                <?php esc_html_e( 'Hands-on reviews and comparisons of the products we actually use and recommend.', 'nestnthrive' ); ?>
             </p>
         </div>
     </div>
 </section>
 
-<!-- Filter by Room/Goal -->
-<?php
-$room_terms = get_terms( array( 'taxonomy' => 'nnt_room_tax', 'hide_empty' => true ) );
-$goal_terms = get_terms( array( 'taxonomy' => 'nnt_goal_tax', 'hide_empty' => true ) );
-?>
-<?php if ( ( ! is_wp_error( $room_terms ) && ! empty( $room_terms ) ) || ( ! is_wp_error( $goal_terms ) && ! empty( $goal_terms ) ) ) : ?>
-<section class="nnt-section nnt-section--alt nnt-archive-filters">
+<!-- COLLECTIONS GRID -->
+<?php if ( ! empty( $collections ) ) : ?>
+<section class="nnt-section nnt-section--white">
     <div class="nnt-container">
-        <div class="nnt-filter-bar">
-            <?php if ( ! is_wp_error( $room_terms ) && ! empty( $room_terms ) ) : ?>
-                <div class="nnt-filter-group">
-                    <span class="nnt-filter-group__label"><?php esc_html_e( 'By Room:', 'nestnthrive' ); ?></span>
-                    <div class="nnt-filter-group__items">
-                        <?php foreach ( $room_terms as $term ) : ?>
-                            <a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="nnt-filter-tag">
-                                <?php echo esc_html( $term->name ); ?>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
-            
-            <?php if ( ! is_wp_error( $goal_terms ) && ! empty( $goal_terms ) ) : ?>
-                <div class="nnt-filter-group">
-                    <span class="nnt-filter-group__label"><?php esc_html_e( 'By Goal:', 'nestnthrive' ); ?></span>
-                    <div class="nnt-filter-group__items">
-                        <?php foreach ( $goal_terms as $term ) : ?>
-                            <a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="nnt-filter-tag">
-                                <?php echo esc_html( $term->name ); ?>
-                            </a>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            <?php endif; ?>
+        <div class="nnt-grid nnt-grid--3 nnt-reveal">
+            <?php foreach ( $collections as $collection ) : ?>
+                <?php get_template_part( 'template-parts/components/card-review', null, array( 'post' => $collection ) ); ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php else : ?>
+<section class="nnt-section nnt-section--white">
+    <div class="nnt-container">
+        <div class="nnt-reveal" style="text-align: center; padding: 4rem 2rem;">
+            <p style="color: var(--nnt-stone-500);"><?php esc_html_e( 'No reviews found. Check back soon!', 'nestnthrive' ); ?></p>
         </div>
     </div>
 </section>
 <?php endif; ?>
 
-<!-- Collections Grid -->
-<section class="nnt-section">
-    <div class="nnt-container">
-        <?php if ( have_posts() ) : ?>
-            <div class="nnt-card-grid nnt-card-grid--3">
-                <?php
-                while ( have_posts() ) :
-                    the_post();
-                    get_template_part( 'template-parts/components/card', null, array(
-                        'post' => get_post(),
-                        'type' => 'nnt_collection',
-                    ) );
-                endwhile;
-                ?>
-            </div>
+<!-- NEWSLETTER -->
+<?php get_template_part( 'template-parts/components/newsletter-v2' ); ?>
 
-            <div class="nnt-pagination">
-                <?php
-                the_posts_pagination( array(
-                    'mid_size'  => 2,
-                    'prev_text' => __( '← Previous', 'nestnthrive' ),
-                    'next_text' => __( 'Next →', 'nestnthrive' ),
-                ) );
-                ?>
-            </div>
-        <?php else : ?>
-            <p class="nnt-no-content"><?php esc_html_e( 'No collections found.', 'nestnthrive' ); ?></p>
-        <?php endif; ?>
-    </div>
-</section>
-
-<?php
-get_footer();
-
+<?php get_footer(); ?>

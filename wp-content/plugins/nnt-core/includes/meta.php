@@ -255,6 +255,100 @@ function nnt_register_meta_fields() {
         'auth_callback'     => 'nnt_user_can_edit',
         'default'           => array(),
     ) );
+
+    // Products tested count.
+    register_post_meta( 'nnt_collection', 'nnt_products_tested', array(
+        'type'              => 'integer',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'absint',
+        'auth_callback'     => 'nnt_user_can_edit',
+        'default'           => 0,
+    ) );
+
+    // Products data (repeatable group stored as serialized array).
+    register_post_meta( 'nnt_collection', 'nnt_products_data', array(
+        'type'              => 'array',
+        'single'            => true,
+        'show_in_rest'      => array(
+            'schema' => array(
+                'type'  => 'array',
+                'items' => array(
+                    'type'       => 'object',
+                    'properties' => array(
+                        'name'          => array( 'type' => 'string' ),
+                        'image_url'     => array( 'type' => 'string' ),
+                        'price_note'    => array( 'type' => 'string' ),
+                        'rating'        => array( 'type' => 'number' ),
+                        'affiliate_url' => array( 'type' => 'string' ),
+                        'pros'          => array( 'type' => 'array', 'items' => array( 'type' => 'string' ) ),
+                        'cons'          => array( 'type' => 'array', 'items' => array( 'type' => 'string' ) ),
+                    ),
+                ),
+            ),
+        ),
+        'auth_callback'     => 'nnt_user_can_edit',
+        'default'           => array(),
+    ) );
+
+    // =========================================================================
+    // Deal Meta Fields (on nnt_collection)
+    // =========================================================================
+
+    // Deal active flag.
+    register_post_meta( 'nnt_collection', 'nnt_deal_active', array(
+        'type'              => 'boolean',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'nnt_sanitize_boolean',
+        'auth_callback'     => 'nnt_user_can_edit',
+        'default'           => false,
+    ) );
+
+    // Deal badge text.
+    register_post_meta( 'nnt_collection', 'nnt_deal_badge', array(
+        'type'              => 'string',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        'auth_callback'     => 'nnt_user_can_edit',
+    ) );
+
+    // Deal last checked timestamp.
+    register_post_meta( 'nnt_collection', 'nnt_deal_last_checked', array(
+        'type'              => 'string',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        'auth_callback'     => 'nnt_user_can_edit',
+    ) );
+
+    // Deal expiration date.
+    register_post_meta( 'nnt_collection', 'nnt_deal_expires_at', array(
+        'type'              => 'string',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        'auth_callback'     => 'nnt_user_can_edit',
+    ) );
+
+    // Deal original price.
+    register_post_meta( 'nnt_collection', 'nnt_deal_original_price', array(
+        'type'              => 'string',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        'auth_callback'     => 'nnt_user_can_edit',
+    ) );
+
+    // Deal sale price.
+    register_post_meta( 'nnt_collection', 'nnt_deal_sale_price', array(
+        'type'              => 'string',
+        'single'            => true,
+        'show_in_rest'      => true,
+        'sanitize_callback' => 'sanitize_text_field',
+        'auth_callback'     => 'nnt_user_can_edit',
+    ) );
 }
 add_action( 'init', 'nnt_register_meta_fields' );
 

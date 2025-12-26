@@ -1,0 +1,365 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nest N Thrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Setup - Exact System Match */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #FAFAF9; /* Stone-50 */
+            color: #1C1917; /* Stone-900 */
+        }
+        
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Instrument Serif', serif; 
+        }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay Utilities */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Custom Utilities */
+        .tracking-tight-custom { letter-spacing: -0.025em; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3F4A3C] selection:text-white">
+
+    <!-- 1) NAV (System Standard) -->
+    <nav class="fixed top-0 w-full z-50 bg-[#FAFAF9]/85 backdrop-blur-xl border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 bg-[#3F4A3C] rounded-lg flex items-center justify-center text-white shadow-sm group-hover:bg-[#2C332A] transition-colors">
+                        <i data-lucide="bird" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-serif text-2xl tracking-tight text-stone-900 pt-1">Nest N Thrive</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Reviews</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Spaces</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Goals</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Deals</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-5">
+                    <button class="text-stone-500 hover:text-stone-900 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <a href="#newsletter" class="hidden sm:block bg-[#1C1917] hover:bg-[#3F4A3C] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-colors duration-300 shadow-md shadow-stone-900/5">
+                        Subscribe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2) HERO SECTION (Editorial Style) -->
+    <header class="pt-32 pb-16 md:pt-40 md:pb-20 border-b border-stone-100 bg-white">
+        <div class="max-w-3xl mx-auto px-6 reveal">
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 text-xs font-medium text-stone-400 mb-8 uppercase tracking-wider">
+                <a href="#" class="hover:text-stone-900 transition-colors">Home</a>
+                <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                <span class="text-[#3F4A3C]">About Us</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl lg:text-7xl text-stone-900 leading-[1] mb-8 tracking-tight-custom font-medium">
+                About Nest N Thrive
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-stone-500 leading-relaxed font-light mb-0 max-w-2xl">
+                Thoughtful home recommendations, tested and explained — without the noise. We believe your space should serve you, not the other way around.
+            </p>
+        </div>
+    </header>
+
+    <!-- 3) WHY WE EXIST (Editorial Content) -->
+    <section class="py-20 md:py-28 bg-white">
+        <div class="max-w-3xl mx-auto px-6 reveal">
+            <div class="prose prose-stone prose-lg max-w-none">
+                <h2 class="text-3xl md:text-4xl font-serif text-stone-900 mb-8">Why We Exist</h2>
+                
+                <p class="text-stone-600 leading-8 mb-8">
+                    The internet is loud. If you search for "best coffee maker" or "minimalist desk," you are bombarded with AI-generated listicles, aggressive pop-ups, and reviews from people who have never touched the product.
+                </p>
+                
+                <p class="text-stone-600 leading-8 mb-8">
+                    <strong class="text-stone-900 font-semibold">We built Nest N Thrive to be the quiet corner.</strong>
+                </p>
+
+                <p class="text-stone-600 leading-8">
+                    We prioritize clarity, calm, and utility. We don't care about the latest viral trend if it falls apart in six months. We care about materials that age gracefully, designs that solve actual problems, and products that respect your time and money.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) HOW WE REVIEW (Process Steps) -->
+    <section class="py-20 bg-[#FAFAF9] border-y border-stone-200">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-serif text-stone-900 mb-4">Our Review Process</h2>
+                <p class="text-stone-500">We take the long road so you can take the shortcut.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 reveal delay-100">
+                <!-- Step 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm flex flex-col items-start gap-4">
+                    <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-[#3F4A3C]">
+                        <span class="font-serif text-xl">1</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-900 mb-2">Deep Research</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            Before we touch a product, we analyze the market. We look at materials, manufacturing history, and user feedback to filter out the junk immediately.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm flex flex-col items-start gap-4">
+                    <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-[#3F4A3C]">
+                        <span class="font-serif text-xl">2</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-900 mb-2">Hands-on Testing</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            We bring products into real homes, not labs. We spill coffee on them, drop them, and use them daily to see how they hold up to actual life.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm flex flex-col items-start gap-4">
+                    <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-[#3F4A3C]">
+                        <span class="font-serif text-xl">3</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-900 mb-2">Long-term Evaluation</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            A review written after 24 hours is useless. We update our guides months later to report on wear and tear, battery degradation, and durability.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200 shadow-sm flex flex-col items-start gap-4">
+                    <div class="w-10 h-10 bg-stone-100 rounded-lg flex items-center justify-center text-[#3F4A3C]">
+                        <span class="font-serif text-xl">4</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-stone-900 mb-2">Honest Conclusions</h3>
+                        <p class="text-stone-500 text-sm leading-relaxed">
+                            If a product is expensive but worth it, we say so. If a budget option is better than the premium one, we tell you exactly why.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) WHO THIS IS FOR + AFFILIATE INFO -->
+    <section class="py-20 bg-white">
+        <div class="max-w-3xl mx-auto px-6 reveal">
+            
+            <!-- Who This Is For -->
+            <h2 class="text-3xl font-serif text-stone-900 mb-8">Who We Write For</h2>
+            <div class="grid sm:grid-cols-2 gap-4 mb-16">
+                <div class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-5 h-5 text-[#3F4A3C] mt-0.5 shrink-0"></i>
+                    <span class="text-stone-600">Renters looking for non-permanent upgrades</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-5 h-5 text-[#3F4A3C] mt-0.5 shrink-0"></i>
+                    <span class="text-stone-600">Homeowners valuing "buy it for life" quality</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-5 h-5 text-[#3F4A3C] mt-0.5 shrink-0"></i>
+                    <span class="text-stone-600">People living in small or shared spaces</span>
+                </div>
+                <div class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-5 h-5 text-[#3F4A3C] mt-0.5 shrink-0"></i>
+                    <span class="text-stone-600">Anyone overwhelmed by endless choices</span>
+                </div>
+            </div>
+
+            <!-- Transparency Block -->
+            <div class="bg-stone-50 border border-stone-200 rounded-2xl p-8 relative overflow-hidden">
+                <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                    <i data-lucide="scale" class="w-24 h-24 text-[#3F4A3C]"></i>
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-xl font-serif text-stone-900 mb-4">A Note on Transparency</h3>
+                    <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                        Nest N Thrive is reader-supported. When you buy through links on our site, we may earn an affiliate commission. 
+                    </p>
+                    <p class="text-stone-600 text-sm leading-relaxed">
+                        This does not affect our editorial independence. We are not paid by brands to rank their products higher. If we recommend something, it's because we believe it's the best option for your home, period.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 6) TRUST BLOCK (Locked System Component) -->
+    <section class="py-24 bg-[#3F4A3C] text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif mb-16">We buy it. We break it. You buy better.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="wind" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Calm</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Reduce visual noise, increase ease. We choose designs that disappear into your life.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Practical</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Prioritize what actually helps day-to-day. No single-use gadgets or fragile trends.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Quality</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Buy once when possible. Skip gimmicks. We look for materials that age gracefully.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7) NEWSLETTER -->
+    <section id="newsletter" class="py-24 bg-stone-50 border-b border-stone-200">
+        <div class="max-w-xl mx-auto px-6 text-center reveal">
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-stone-200 flex items-center justify-center mx-auto mb-6 text-[#3F4A3C]">
+                <i data-lucide="mail" class="w-7 h-7"></i>
+            </div>
+            <h2 class="text-4xl font-serif text-stone-900 mb-4">Join the Inner Circle</h2>
+            <p class="text-stone-500 mb-8 font-light leading-relaxed">
+                Occasional deal alerts and practical guides — no spam, no daily clutter.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="email@address.com" class="flex-1 px-5 py-3.5 rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#3F4A3C]/20 focus:border-[#3F4A3C] bg-white transition-all placeholder-stone-400">
+                <button class="px-8 py-3.5 bg-[#1C1917] text-white font-semibold rounded-lg hover:bg-[#3F4A3C] transition-colors shadow-lg shadow-stone-900/10">
+                    Subscribe
+                </button>
+            </form>
+            <p class="text-[10px] text-stone-400 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- 8) FOOTER -->
+    <footer class="bg-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+                <!-- Brand -->
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-[#3F4A3C] rounded flex items-center justify-center text-white">
+                            <i data-lucide="bird" class="w-3 h-3"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-stone-900">Nest N Thrive</span>
+                    </div>
+                    <p class="text-stone-500 text-sm leading-relaxed max-w-xs mb-6">
+                        Making home life simpler through honest reviews and practical guides.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="pinterest" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Explore -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Explore</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Reviews</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Spaces</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Goals</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Guides</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Deals</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Company</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Legal</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Privacy</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Terms</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Affiliate Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-stone-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-stone-400">
+                <p>© 2024 Nest N Thrive. All rights reserved.</p>
+                <p class="text-center md:text-right max-w-lg">
+                    As an Amazon Associate, we may earn from qualifying purchases. This helps support our independent testing.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal Animation Observer
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body></html>

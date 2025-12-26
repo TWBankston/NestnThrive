@@ -1,22 +1,17 @@
 <?php
 /**
- * Footer Template
+ * Theme Footer
  *
  * @package NestNThrive
  */
 
-// Prevent direct access.
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
+
+get_template_part( 'template-parts/site-footer' );
+
+wp_footer();
 ?>
-    </main><!-- .nnt-main -->
-
-    <?php get_template_part( 'template-parts/site-footer' ); ?>
-
-</div><!-- .nnt-site -->
-
-<?php wp_footer(); ?>
 </body>
 </html>
-

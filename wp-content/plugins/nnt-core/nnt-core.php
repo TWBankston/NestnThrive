@@ -103,3 +103,24 @@ function nnt_core_load_textdomain() {
 }
 add_action( 'init', 'nnt_core_load_textdomain' );
 
+/**
+ * Register WP-CLI commands.
+ */
+if ( defined( 'WP_CLI' ) && WP_CLI ) {
+    WP_CLI::add_command( 'nnt seed', array( 'NNT_Core_Seeder', 'run_seeder_cli' ) );
+}
+
+/**
+ * Register admin menu for seeder.
+ */
+function nnt_core_seeder_admin_menu() {
+    add_management_page(
+        __( 'NNT Site Seeder', 'nnt-core' ),
+        __( 'NNT Site Seeder', 'nnt-core' ),
+        'manage_options',
+        'nnt-seeder',
+        'nnt_core_seeder_admin_page_content'
+    );
+}
+add_action( 'admin_menu', 'nnt_core_seeder_admin_menu' );
+

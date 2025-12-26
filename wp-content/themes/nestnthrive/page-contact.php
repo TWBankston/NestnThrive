@@ -2,157 +2,181 @@
 /**
  * Template Name: Contact Page
  * 
- * Contact page template with form handling.
+ * Contact Page Template - V2 Aura
  *
  * @package NestNThrive
  */
 
-// Prevent direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
-
 get_header();
 
-// Get form messages.
-$success_message = get_transient( 'nnt_contact_success' );
-$error_message   = get_transient( 'nnt_contact_error' );
+$title = get_the_title();
 
-// Clear transients after reading.
-if ( $success_message ) {
-    delete_transient( 'nnt_contact_success' );
-}
-if ( $error_message ) {
-    delete_transient( 'nnt_contact_error' );
+// Handle form submission
+$form_submitted = false;
+$form_success   = false;
+$form_error     = '';
+
+if ( isset( $_POST['nnt_contact_submit'] ) && wp_verify_nonce( $_POST['nnt_contact_nonce'], 'nnt_contact_form' ) ) {
+    $name    = sanitize_text_field( $_POST['nnt_name'] ?? '' );
+    $email   = sanitize_email( $_POST['nnt_email'] ?? '' );
+    $message = sanitize_textarea_field( $_POST['nnt_message'] ?? '' );
+    
+    // Simple honeypot check
+    if ( ! empty( $_POST['nnt_website'] ) ) {
+        // Likely spam, silently fail
+        $form_submitted = true;
+        $form_success   = true;
+    } elseif ( empty( $name ) || empty( $email ) || empty( $message ) ) {
+        $form_submitted = true;
+        $form_error     = __( 'Please fill in all required fields.', 'nestnthrive' );
+    } elseif ( ! is_email( $email ) ) {
+        $form_submitted = true;
+        $form_error     = __( 'Please enter a valid email address.', 'nestnthrive' );
+    } else {
+        $to      = get_option( 'admin_email' );
+        $subject = sprintf( __( '[Nest N Thrive] Contact from %s', 'nestnthrive' ), $name );
+        $body    = sprintf(
+            __( "Name: %s\nEmail: %s\n\nMessage:\n%s", 'nestnthrive' ),
+            $name,
+            $email,
+            $message
+        );
+        $headers = array(
+            'From: ' . $name . ' <' . $email . '>',
+            'Reply-To: ' . $email,
+        );
+        
+        $sent = wp_mail( $to, $subject, $body, $headers );
+        
+        $form_submitted = true;
+        $form_success   = $sent;
+        
+        if ( ! $sent ) {
+            $form_error = __( 'There was a problem sending your message. Please try again later.', 'nestnthrive' );
+        }
+    }
 }
 ?>
 
-<!-- HERO SECTION -->
-<header class="nnt-page-hero nnt-page-hero--contact">
-    <div class="nnt-page-hero__bg"></div>
-    
+<!-- HERO -->
+<section class="nnt-section nnt-section--hero" style="overflow: hidden;">
     <div class="nnt-container">
-        <div class="nnt-page-hero__content">
-            <h1 class="nnt-page-hero__title"><?php esc_html_e( 'Contact Us', 'nestnthrive' ); ?></h1>
-            <p class="nnt-page-hero__subtitle">
-                <?php esc_html_e( 'Have a question, suggestion, or correction? We value clear communication and would love to hear from you.', 'nestnthrive' ); ?>
+        <div class="nnt-reveal" style="text-align: center; max-width: 48rem; margin: 0 auto;">
+            <?php
+            get_template_part( 'template-parts/components/breadcrumbs-v2', null, array(
+                'items' => array(
+                    array( 'label' => __( 'Home', 'nestnthrive' ), 'url' => home_url( '/' ) ),
+                    array( 'label' => __( 'Contact', 'nestnthrive' ) ),
+                ),
+            ) );
+            ?>
+            
+            <h1 class="nnt-hero__title" style="margin-top: 1rem;"><?php echo esc_html( $title ); ?></h1>
+            
+            <p class="nnt-hero__desc" style="max-width: 36rem; margin: 1rem auto;">
+                <?php esc_html_e( 'Have a question, suggestion, or just want to say hi? We\'d love to hear from you.', 'nestnthrive' ); ?>
             </p>
         </div>
     </div>
-</header>
+</section>
 
-<main class="nnt-page-content">
-    <section class="nnt-section nnt-section--contact">
-        <div class="nnt-container">
-            <div class="nnt-contact-grid">
-                
-                <!-- Left Column: Context & Info -->
-                <div class="nnt-contact-info">
-                    <div class="nnt-contact-info__main">
-                        <h2 class="nnt-contact-info__title"><?php esc_html_e( 'How can we help?', 'nestnthrive' ); ?></h2>
-                        <p class="nnt-contact-info__text">
-                            <?php esc_html_e( 'We read every message. To ensure we can help you efficiently, here are the topics we are best equipped to address:', 'nestnthrive' ); ?>
-                        </p>
-                        
-                        <ul class="nnt-contact-info__list">
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><?php esc_html_e( 'Questions about specific guides or products', 'nestnthrive' ); ?></span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><?php esc_html_e( 'Corrections or updates to existing content', 'nestnthrive' ); ?></span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><?php esc_html_e( 'Suggestions for future topics', 'nestnthrive' ); ?></span>
-                            </li>
-                            <li>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                                <span><?php esc_html_e( 'General feedback on the site experience', 'nestnthrive' ); ?></span>
-                            </li>
-                        </ul>
+<!-- CONTACT FORM -->
+<section class="nnt-section nnt-section--white">
+    <div class="nnt-container" style="max-width: 42rem;">
+        <?php if ( $form_submitted && $form_success ) : ?>
+            <div class="nnt-reveal" style="text-align: center; padding: 3rem 2rem; background: var(--nnt-stone-50); border-radius: 1rem;">
+                <div style="width: 4rem; height: 4rem; background: var(--nnt-forest); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i data-lucide="check" style="width: 2rem; height: 2rem; color: #fff;"></i>
+                </div>
+                <h2 style="font-size: 1.5rem; color: var(--nnt-stone-900); margin-bottom: 0.75rem;"><?php esc_html_e( 'Message Sent!', 'nestnthrive' ); ?></h2>
+                <p style="color: var(--nnt-stone-600);"><?php esc_html_e( 'Thanks for reaching out. We\'ll get back to you as soon as we can.', 'nestnthrive' ); ?></p>
+            </div>
+        <?php else : ?>
+            <div class="nnt-reveal">
+                <?php if ( $form_error ) : ?>
+                    <div style="background: #fef2f2; border: 1px solid #fecaca; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1.5rem; color: #dc2626;">
+                        <?php echo esc_html( $form_error ); ?>
                     </div>
+                <?php endif; ?>
+
+                <form method="post" class="nnt-contact-form" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <?php wp_nonce_field( 'nnt_contact_form', 'nnt_contact_nonce' ); ?>
                     
-                    <div class="nnt-contact-info__email">
-                        <h3><?php esc_html_e( 'Email Direct', 'nestnthrive' ); ?></h3>
-                        <a href="mailto:<?php echo esc_attr( get_option( 'admin_email' ) ); ?>">
-                            <?php echo esc_html( get_option( 'admin_email' ) ); ?>
-                        </a>
+                    <!-- Honeypot -->
+                    <div style="position: absolute; left: -9999px;">
+                        <label for="nnt_website">Website</label>
+                        <input type="text" name="nnt_website" id="nnt_website" tabindex="-1" autocomplete="off">
                     </div>
-                </div>
 
-                <!-- Right Column: The Form -->
-                <div class="nnt-contact-form-wrap">
-                    <div class="nnt-contact-form-card">
-                        <?php if ( $success_message ) : ?>
-                            <div class="nnt-contact-message nnt-contact-message--success">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <p><?php echo esc_html( $success_message ); ?></p>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <?php if ( $error_message ) : ?>
-                            <div class="nnt-contact-message nnt-contact-message--error">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
-                                <p><?php echo esc_html( $error_message ); ?></p>
-                            </div>
-                        <?php endif; ?>
-                        
-                        <form action="<?php echo esc_url( get_permalink() ); ?>" method="POST" class="nnt-contact-form">
-                            <?php wp_nonce_field( 'nnt_contact_form', 'nnt_contact_nonce' ); ?>
-                            
-                            <div class="nnt-contact-form__row">
-                                <div class="nnt-contact-form__field">
-                                    <label for="nnt_name"><?php esc_html_e( 'Name', 'nestnthrive' ); ?></label>
-                                    <input 
-                                        type="text" 
-                                        id="nnt_name" 
-                                        name="nnt_name" 
-                                        required 
-                                        placeholder="<?php esc_attr_e( 'Jane Doe', 'nestnthrive' ); ?>"
-                                    >
-                                </div>
-                                <div class="nnt-contact-form__field">
-                                    <label for="nnt_email"><?php esc_html_e( 'Email', 'nestnthrive' ); ?></label>
-                                    <input 
-                                        type="email" 
-                                        id="nnt_email" 
-                                        name="nnt_email" 
-                                        required 
-                                        placeholder="<?php esc_attr_e( 'jane@example.com', 'nestnthrive' ); ?>"
-                                    >
-                                </div>
-                            </div>
-                            
-                            <div class="nnt-contact-form__field">
-                                <label for="nnt_message"><?php esc_html_e( 'Message', 'nestnthrive' ); ?></label>
-                                <textarea 
-                                    id="nnt_message" 
-                                    name="nnt_message" 
-                                    rows="6" 
-                                    required 
-                                    placeholder="<?php esc_attr_e( 'How can we help you today?', 'nestnthrive' ); ?>"
-                                ></textarea>
-                            </div>
-                            
-                            <div class="nnt-contact-form__footer">
-                                <button type="submit" class="nnt-button nnt-button--primary nnt-button--large">
-                                    <?php esc_html_e( 'Send Message', 'nestnthrive' ); ?>
-                                </button>
-                                
-                                <p class="nnt-contact-form__note">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                    <?php esc_html_e( 'We typically respond within 2-3 business days.', 'nestnthrive' ); ?>
-                                </p>
-                            </div>
-                        </form>
+                    <div>
+                        <label for="nnt_name" style="display: block; font-weight: 500; color: var(--nnt-stone-700); margin-bottom: 0.5rem;">
+                            <?php esc_html_e( 'Your Name', 'nestnthrive' ); ?> <span style="color: var(--nnt-forest);">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            name="nnt_name" 
+                            id="nnt_name" 
+                            required
+                            style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--nnt-stone-300); border-radius: 0.5rem; font-size: 1rem; transition: border-color 0.2s;"
+                            value="<?php echo esc_attr( $_POST['nnt_name'] ?? '' ); ?>"
+                        >
                     </div>
-                </div>
+
+                    <div>
+                        <label for="nnt_email" style="display: block; font-weight: 500; color: var(--nnt-stone-700); margin-bottom: 0.5rem;">
+                            <?php esc_html_e( 'Email Address', 'nestnthrive' ); ?> <span style="color: var(--nnt-forest);">*</span>
+                        </label>
+                        <input 
+                            type="email" 
+                            name="nnt_email" 
+                            id="nnt_email" 
+                            required
+                            style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--nnt-stone-300); border-radius: 0.5rem; font-size: 1rem; transition: border-color 0.2s;"
+                            value="<?php echo esc_attr( $_POST['nnt_email'] ?? '' ); ?>"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="nnt_message" style="display: block; font-weight: 500; color: var(--nnt-stone-700); margin-bottom: 0.5rem;">
+                            <?php esc_html_e( 'Message', 'nestnthrive' ); ?> <span style="color: var(--nnt-forest);">*</span>
+                        </label>
+                        <textarea 
+                            name="nnt_message" 
+                            id="nnt_message" 
+                            rows="6" 
+                            required
+                            style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--nnt-stone-300); border-radius: 0.5rem; font-size: 1rem; resize: vertical; transition: border-color 0.2s;"
+                        ><?php echo esc_textarea( $_POST['nnt_message'] ?? '' ); ?></textarea>
+                    </div>
+
+                    <button type="submit" name="nnt_contact_submit" class="nnt-btn nnt-btn--primary" style="align-self: flex-start;">
+                        <?php esc_html_e( 'Send Message', 'nestnthrive' ); ?>
+                        <i data-lucide="send" style="width: 1rem; height: 1rem; margin-left: 0.5rem;"></i>
+                    </button>
+                </form>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+
+<!-- EDITORIAL POLICY -->
+<section class="nnt-section nnt-section--stone">
+    <div class="nnt-container" style="max-width: 42rem;">
+        <div class="nnt-reveal" style="background: #fff; padding: 2rem; border-radius: 1rem;">
+            <h2 style="font-size: 1.25rem; color: var(--nnt-stone-900); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <i data-lucide="shield" style="width: 1.25rem; height: 1.25rem; color: var(--nnt-forest);"></i>
+                <?php esc_html_e( 'Anti-Spam & Editorial Policy', 'nestnthrive' ); ?>
+            </h2>
+            <div style="color: var(--nnt-stone-600); font-size: 0.9375rem; line-height: 1.7;">
+                <p style="margin-bottom: 1rem;">
+                    <?php esc_html_e( 'We don\'t accept unsolicited guest posts, link insertion requests, or paid promotional content. Our editorial is independent and based on our own testing.', 'nestnthrive' ); ?>
+                </p>
+                <p>
+                    <?php esc_html_e( 'If you\'re a brand with a product you think we should review, please include detailed product information. We cannot guarantee coverage, but we do read every message.', 'nestnthrive' ); ?>
+                </p>
             </div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
 
-<?php
-get_footer();
+<?php get_footer(); ?>

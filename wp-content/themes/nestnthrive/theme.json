@@ -12,50 +12,100 @@
             "defaultPalette": false,
             "palette": [
                 {
-                    "color": "#202329",
-                    "name": "Charcoal",
-                    "slug": "charcoal"
+                    "color": "#1C1917",
+                    "name": "Stone 900",
+                    "slug": "stone-900"
                 },
                 {
-                    "color": "#161415",
-                    "name": "Near Black",
-                    "slug": "near-black"
+                    "color": "#292524",
+                    "name": "Stone 800",
+                    "slug": "stone-800"
                 },
                 {
-                    "color": "#E0A456",
-                    "name": "Warm Gold",
-                    "slug": "warm-gold"
+                    "color": "#44403C",
+                    "name": "Stone 700",
+                    "slug": "stone-700"
                 },
                 {
-                    "color": "#E6B87A",
-                    "name": "Light Gold",
-                    "slug": "light-gold"
+                    "color": "#57534E",
+                    "name": "Stone 600",
+                    "slug": "stone-600"
                 },
                 {
-                    "color": "#B08047",
-                    "name": "Bronze",
-                    "slug": "bronze"
+                    "color": "#78716C",
+                    "name": "Stone 500",
+                    "slug": "stone-500"
                 },
                 {
-                    "color": "#6E5032",
-                    "name": "Warm Brown",
-                    "slug": "warm-brown"
+                    "color": "#A8A29E",
+                    "name": "Stone 400",
+                    "slug": "stone-400"
                 },
                 {
-                    "color": "#F7F4EF",
-                    "name": "Off White",
-                    "slug": "off-white"
+                    "color": "#D6D3D1",
+                    "name": "Stone 300",
+                    "slug": "stone-300"
+                },
+                {
+                    "color": "#E7E5E4",
+                    "name": "Stone 200",
+                    "slug": "stone-200"
+                },
+                {
+                    "color": "#F5F5F4",
+                    "name": "Stone 100",
+                    "slug": "stone-100"
+                },
+                {
+                    "color": "#FAFAF9",
+                    "name": "Stone 50",
+                    "slug": "stone-50"
                 },
                 {
                     "color": "#FFFFFF",
                     "name": "White",
                     "slug": "white"
+                },
+                {
+                    "color": "#3F4A3C",
+                    "name": "Forest",
+                    "slug": "forest"
+                },
+                {
+                    "color": "#2C332A",
+                    "name": "Forest Dark",
+                    "slug": "forest-dark"
+                },
+                {
+                    "color": "#EAB308",
+                    "name": "Gold Star",
+                    "slug": "gold-star"
+                },
+                {
+                    "color": "#DCFCE7",
+                    "name": "Green 100",
+                    "slug": "green-100"
+                },
+                {
+                    "color": "#166534",
+                    "name": "Green 800",
+                    "slug": "green-800"
+                },
+                {
+                    "color": "#FEE2E2",
+                    "name": "Red 50",
+                    "slug": "red-50"
+                },
+                {
+                    "color": "#F87171",
+                    "name": "Red 400",
+                    "slug": "red-400"
                 }
             ]
         },
         "layout": {
-            "contentSize": "800px",
-            "wideSize": "1200px"
+            "contentSize": "768px",
+            "wideSize": "1280px"
         },
         "spacing": {
             "padding": true,
@@ -69,61 +119,71 @@
             "fluid": true,
             "fontFamilies": [
                 {
-                    "fontFamily": "Georgia, 'Times New Roman', serif",
+                    "fontFamily": "'Instrument Serif', Georgia, 'Times New Roman', serif",
                     "name": "Heading",
                     "slug": "heading"
                 },
                 {
-                    "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif",
+                    "fontFamily": "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif",
                     "name": "Body",
                     "slug": "body"
                 }
             ],
             "fontSizes": [
                 {
-                    "fluid": {
-                        "min": "0.875rem",
-                        "max": "1rem"
-                    },
+                    "name": "Extra Small",
+                    "size": "0.625rem",
+                    "slug": "xs"
+                },
+                {
                     "name": "Small",
-                    "size": "1rem",
+                    "size": "0.875rem",
                     "slug": "small"
                 },
                 {
-                    "fluid": {
-                        "min": "1rem",
-                        "max": "1.125rem"
-                    },
                     "name": "Medium",
-                    "size": "1.125rem",
+                    "size": "1rem",
                     "slug": "medium"
                 },
                 {
-                    "fluid": {
-                        "min": "1.125rem",
-                        "max": "1.5rem"
-                    },
                     "name": "Large",
-                    "size": "1.5rem",
+                    "size": "1.125rem",
                     "slug": "large"
                 },
                 {
-                    "fluid": {
-                        "min": "1.5rem",
-                        "max": "2.25rem"
-                    },
                     "name": "X-Large",
-                    "size": "2.25rem",
+                    "size": "1.25rem",
                     "slug": "x-large"
                 },
                 {
-                    "fluid": {
-                        "min": "2rem",
-                        "max": "3rem"
-                    },
-                    "name": "XX-Large",
+                    "name": "2X-Large",
+                    "size": "1.5rem",
+                    "slug": "2xl"
+                },
+                {
+                    "name": "3X-Large",
+                    "size": "1.875rem",
+                    "slug": "3xl"
+                },
+                {
+                    "name": "4X-Large",
+                    "size": "2.25rem",
+                    "slug": "4xl"
+                },
+                {
+                    "name": "5X-Large",
                     "size": "3rem",
-                    "slug": "xx-large"
+                    "slug": "5xl"
+                },
+                {
+                    "name": "6X-Large",
+                    "size": "3.75rem",
+                    "slug": "6xl"
+                },
+                {
+                    "name": "7X-Large",
+                    "size": "4.5rem",
+                    "slug": "7xl"
                 }
             ],
             "lineHeight": true
@@ -132,84 +192,85 @@
     },
     "styles": {
         "color": {
-            "background": "var(--wp--preset--color--off-white)",
-            "text": "var(--wp--preset--color--charcoal)"
+            "background": "var(--wp--preset--color--stone-50)",
+            "text": "var(--wp--preset--color--stone-900)"
         },
         "elements": {
             "button": {
                 "border": {
-                    "radius": "4px"
+                    "radius": "9999px"
                 },
                 "color": {
-                    "background": "var(--wp--preset--color--warm-gold)",
-                    "text": "var(--wp--preset--color--near-black)"
+                    "background": "var(--wp--preset--color--stone-900)",
+                    "text": "var(--wp--preset--color--white)"
                 },
                 ":hover": {
                     "color": {
-                        "background": "var(--wp--preset--color--light-gold)"
+                        "background": "var(--wp--preset--color--forest)"
                     }
                 },
                 ":focus": {
                     "color": {
-                        "background": "var(--wp--preset--color--light-gold)"
+                        "background": "var(--wp--preset--color--forest)"
                     }
                 }
             },
             "h1": {
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--heading)",
-                    "fontWeight": "600"
+                    "fontWeight": "500",
+                    "letterSpacing": "-0.025em"
                 },
                 "color": {
-                    "text": "var(--wp--preset--color--near-black)"
+                    "text": "var(--wp--preset--color--stone-900)"
                 }
             },
             "h2": {
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--heading)",
-                    "fontWeight": "600"
+                    "fontWeight": "400"
                 },
                 "color": {
-                    "text": "var(--wp--preset--color--near-black)"
+                    "text": "var(--wp--preset--color--stone-900)"
                 }
             },
             "h3": {
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--heading)",
-                    "fontWeight": "600"
+                    "fontWeight": "400"
                 },
                 "color": {
-                    "text": "var(--wp--preset--color--near-black)"
+                    "text": "var(--wp--preset--color--stone-900)"
                 }
             },
             "h4": {
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--heading)",
-                    "fontWeight": "600"
+                    "fontWeight": "400"
                 },
                 "color": {
-                    "text": "var(--wp--preset--color--near-black)"
+                    "text": "var(--wp--preset--color--stone-900)"
                 }
             },
             "h5": {
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--heading)",
-                    "fontWeight": "600"
+                    "fontWeight": "400"
                 }
             },
             "h6": {
                 "typography": {
                     "fontFamily": "var(--wp--preset--font-family--heading)",
-                    "fontWeight": "600"
+                    "fontWeight": "400"
                 }
             },
             "link": {
                 "color": {
-                    "text": "var(--wp--preset--color--warm-gold)"
+                    "text": "var(--wp--preset--color--forest)"
                 },
                 ":hover": {
                     "color": {
-                        "text": "var(--wp--preset--color--bronze)"
+                        "text": "var(--wp--preset--color--stone-900)"
                     }
                 }
             }
@@ -218,9 +279,9 @@
             "blockGap": "1.5rem",
             "padding": {
                 "top": "0",
-                "right": "var(--wp--preset--spacing--30)",
+                "right": "1.5rem",
                 "bottom": "0",
-                "left": "var(--wp--preset--spacing--30)"
+                "left": "1.5rem"
             }
         },
         "typography": {
@@ -242,4 +303,3 @@
         }
     ]
 }
-

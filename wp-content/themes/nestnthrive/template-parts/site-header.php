@@ -1,6 +1,6 @@
 <?php
 /**
- * Site Header Template Part
+ * Site Header - V2 Aura Design
  *
  * @package NestNThrive
  */
@@ -10,107 +10,40 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 ?>
-<header class="nnt-header" role="banner">
-    <a class="skip-link screen-reader-text" href="#main-content">
-        <?php esc_html_e( 'Skip to content', 'nestnthrive' ); ?>
-    </a>
-    
-    <nav class="nnt-header__nav-wrapper">
-        <div class="nnt-container">
-            <div class="nnt-header__inner">
-                <!-- Logo / Site Title -->
-                <div class="nnt-header__brand">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nnt-header__logo" rel="home">
-                        <img 
-                            src="<?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_120px.png' ) ); ?>" 
-                            srcset="<?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_120px.png' ) ); ?> 1x, 
-                                    <?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_320px.png' ) ); ?> 2x"
-                            alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" 
-                            class="nnt-header__logo-img"
-                            width="120"
-                            height="auto"
-                        >
-                    </a>
+<nav class="nnt-header">
+    <div class="nnt-container">
+        <div class="nnt-header__inner">
+            <!-- Logo -->
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nnt-header__logo">
+                <div class="nnt-header__logo-icon">
+                    <i data-lucide="bird" style="width: 1.25rem; height: 1.25rem;"></i>
                 </div>
+                <span class="nnt-header__logo-text"><?php bloginfo( 'name' ); ?></span>
+            </a>
 
-                <!-- Desktop Navigation -->
-                <div class="nnt-header__menu-desktop">
-                    <?php if ( has_nav_menu( 'primary' ) ) : ?>
-                        <?php
-                        wp_nav_menu( array(
-                            'theme_location' => 'primary',
-                            'menu_class'     => 'nnt-header__menu',
-                            'container'      => false,
-                            'depth'          => 2,
-                            'fallback_cb'    => false,
-                        ) );
-                        ?>
-                    <?php else : ?>
-                        <ul class="nnt-header__menu">
-                            <li><a href="<?php echo esc_url( home_url( '/room/' ) ); ?>"><?php esc_html_e( 'Shop by Room', 'nestnthrive' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/goal/' ) ); ?>"><?php esc_html_e( 'Shop by Goal', 'nestnthrive' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/guides/' ) ); ?>"><?php esc_html_e( 'Guides', 'nestnthrive' ); ?></a></li>
-                            <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'nestnthrive' ); ?></a></li>
-                        </ul>
-                    <?php endif; ?>
-                </div>
+            <!-- Desktop Navigation -->
+            <div class="nnt-header__nav">
+                <a href="<?php echo esc_url( get_post_type_archive_link( 'nnt_collection' ) ); ?>" class="nnt-header__nav-link">Reviews</a>
+                <a href="<?php echo esc_url( get_post_type_archive_link( 'nnt_room' ) ); ?>" class="nnt-header__nav-link">Spaces</a>
+                <a href="<?php echo esc_url( get_post_type_archive_link( 'nnt_goal' ) ); ?>" class="nnt-header__nav-link">Goals</a>
+                <a href="<?php echo esc_url( get_post_type_archive_link( 'nnt_guide' ) ); ?>" class="nnt-header__nav-link">Guides</a>
+                <?php
+                $deals_page = get_page_by_path( 'deals' );
+                if ( $deals_page ) :
+                ?>
+                <a href="<?php echo esc_url( get_permalink( $deals_page ) ); ?>" class="nnt-header__nav-link">Deals</a>
+                <?php endif; ?>
+            </div>
 
-                <!-- CTA Button -->
-                <div class="nnt-header__cta">
-                    <a href="#newsletter" class="nnt-header__cta-button">
-                        <?php esc_html_e( 'Join the List', 'nestnthrive' ); ?>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="nnt-header__menu-toggle" aria-controls="mobile-navigation" aria-expanded="false" aria-label="<?php esc_attr_e( 'Open menu', 'nestnthrive' ); ?>">
-                    <span class="nnt-header__hamburger" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
+            <!-- Actions -->
+            <div class="nnt-header__actions">
+                <button class="nnt-header__search" aria-label="<?php esc_attr_e( 'Search', 'nestnthrive' ); ?>">
+                    <i data-lucide="search" style="width: 1.25rem; height: 1.25rem;"></i>
                 </button>
+                <a href="#newsletter" class="nnt-header__cta">
+                    <?php esc_html_e( 'Subscribe', 'nestnthrive' ); ?>
+                </a>
             </div>
         </div>
-    </nav>
-
-    <!-- Mobile Navigation -->
-    <nav class="nnt-header__mobile-nav" id="mobile-navigation" aria-label="<?php esc_attr_e( 'Mobile Navigation', 'nestnthrive' ); ?>">
-        <div class="nnt-container">
-            <?php if ( has_nav_menu( 'primary' ) ) : ?>
-                <?php
-                wp_nav_menu( array(
-                    'theme_location' => 'primary',
-                    'menu_class'     => 'nnt-header__mobile-menu',
-                    'container'      => false,
-                    'depth'          => 2,
-                    'fallback_cb'    => false,
-                ) );
-                ?>
-            <?php else : ?>
-                <ul class="nnt-header__mobile-menu">
-                    <li><a href="<?php echo esc_url( home_url( '/room/' ) ); ?>"><?php esc_html_e( 'Shop by Room', 'nestnthrive' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/goal/' ) ); ?>"><?php esc_html_e( 'Shop by Goal', 'nestnthrive' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/guides/' ) ); ?>"><?php esc_html_e( 'Guides', 'nestnthrive' ); ?></a></li>
-                    <li><a href="<?php echo esc_url( home_url( '/about/' ) ); ?>"><?php esc_html_e( 'About', 'nestnthrive' ); ?></a></li>
-                </ul>
-            <?php endif; ?>
-        </div>
-    </nav>
-</header>
-
-<script>
-(function() {
-    const toggle = document.querySelector('.nnt-header__menu-toggle');
-    const mobileNav = document.querySelector('.nnt-header__mobile-nav');
-    
-    if (toggle && mobileNav) {
-        toggle.addEventListener('click', function() {
-            const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-            toggle.setAttribute('aria-expanded', !isExpanded);
-            mobileNav.classList.toggle('is-open');
-            document.body.classList.toggle('nnt-mobile-menu-open');
-        });
-    }
-})();
-</script>
+    </div>
+</nav>

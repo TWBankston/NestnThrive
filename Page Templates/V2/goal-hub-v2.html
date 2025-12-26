@@ -1,0 +1,568 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organization &amp; Storage - Nest N Thrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Setup */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #FAFAF9; /* Stone-50 */
+            color: #1C1917; /* Stone-900 */
+        }
+        
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Instrument Serif', serif; 
+        }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Modern Card Hover */
+        .hover-card-lift {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .hover-card-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Image Zoom */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.03); /* Subtle 3% zoom */
+        }
+
+        /* Hide Scrollbar */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3F4A3C] selection:text-white">
+
+    <!-- 1) HEADER / NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-[#FAFAF9]/85 backdrop-blur-xl border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 bg-[#3F4A3C] rounded-lg flex items-center justify-center text-white shadow-sm group-hover:bg-[#2C332A] transition-colors">
+                        <i data-lucide="bird" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-serif text-2xl tracking-tight text-stone-900 pt-1">Nest N Thrive</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#reviews" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Reviews</a>
+                    <a href="#spaces" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Spaces</a>
+                    <a href="#goals" class="text-stone-900 text-sm font-medium transition-colors">Goals</a>
+                    <a href="#guides" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Guides</a>
+                    <a href="#deals" class="text-stone-600 hover:text-[#3F4A3C] text-sm font-medium transition-colors">Deals</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-5">
+                    <button class="text-stone-500 hover:text-stone-900 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <a href="#newsletter" class="hidden sm:block bg-[#1C1917] hover:bg-[#3F4A3C] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-colors duration-300 shadow-md shadow-stone-900/5">
+                        Subscribe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2) GOAL HERO -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+                
+                <!-- Text Content -->
+                <div class="reveal max-w-2xl">
+                    <!-- Breadcrumbs -->
+                    <div class="flex items-center gap-2 text-xs font-medium text-stone-400 mb-6 uppercase tracking-wider">
+                        <a href="#" class="hover:text-stone-900 transition-colors">Home</a>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        <a href="#" class="hover:text-stone-900 transition-colors">Goals</a>
+                        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                        <span class="text-[#3F4A3C]">Organization &amp; Storage</span>
+                    </div>
+
+                    <h1 class="text-5xl md:text-7xl text-stone-900 leading-[1.05] mb-6 tracking-tight font-medium">
+                        Organization &amp; Storage
+                    </h1>
+                    <p class="text-lg text-stone-500 leading-relaxed font-light max-w-lg mb-10">
+                        A place for everything means a clearer mind. We test bins, shelves, and systems to help you reclaim your space from the clutter.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <button class="bg-[#3F4A3C] text-white px-8 py-4 rounded-full text-sm font-semibold hover:bg-[#2C332A] transition-all shadow-lg shadow-[#3F4A3C]/20 w-full sm:w-auto">
+                            Browse Reviews
+                        </button>
+                        <button class="bg-white border border-stone-200 text-stone-700 px-8 py-4 rounded-full text-sm font-semibold hover:bg-stone-50 hover:border-stone-300 transition-all w-full sm:w-auto">
+                            Explore Spaces
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Visual -->
+                <div class="relative rounded-3xl overflow-hidden aspect-[4/3] reveal delay-200 group shadow-2xl shadow-stone-200">
+                    <img src="https://images.unsplash.com/photo-1595515106969-1ce29566ff1c?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" alt="Organized Pantry" class="object-cover w-full h-full img-zoom">
+                    
+                    <!-- Floating Card -->
+                    <div class="absolute bottom-8 left-8 bg-white/95 backdrop-blur-md p-4 rounded-xl shadow-lg border border-white/20 max-w-[240px] hidden md:block">
+                        <div class="flex items-start gap-3">
+                            <div class="p-2 bg-stone-100 rounded-lg text-[#3F4A3C]">
+                                <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-stone-900 mb-1">Systematic Calm</p>
+                                <p class="text-[10px] text-stone-500 leading-snug">Modular solutions for flexible living.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3) ESSENTIAL PICKS (Collections) -->
+    <section id="reviews" class="py-24 bg-white border-y border-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-4xl text-stone-900 mb-2 reveal">Essential Picks for Organization</h2>
+            <p class="text-stone-500 mb-12 font-light reveal">The foundational gear we’ve tested and rely on to keep the chaos at bay.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <article class="group cursor-pointer hover-card-lift reveal delay-100">
+                    <div class="relative overflow-hidden rounded-2xl bg-stone-200 aspect-[5/4] mb-5">
+                        <img src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full img-zoom" alt="Storage Bins">
+                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider text-stone-900 border border-stone-200">
+                            Bins
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-medium text-stone-900 mb-2 group-hover:text-[#3F4A3C] transition-colors leading-tight">Clear Storage Bins That Last</h3>
+                    <div class="flex gap-1 text-[#EAB308] mb-3">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star-half" class="w-3.5 h-3.5 fill-current"></i>
+                    </div>
+                    <p class="text-stone-500 text-sm mb-4 line-clamp-2 leading-relaxed">We tested 12 brands to find the ones that stack securely and don't crack under pressure.</p>
+                    <span class="text-xs font-semibold text-stone-900 border-b border-stone-300 pb-0.5 group-hover:border-[#3F4A3C] transition-colors">Read Review</span>
+                </article>
+
+                <!-- Review 2 -->
+                <article class="group cursor-pointer hover-card-lift reveal delay-200">
+                    <div class="relative overflow-hidden rounded-2xl bg-stone-200 aspect-[5/4] mb-5">
+                        <img src="https://images.unsplash.com/photo-1591129841117-3adfd313e34f?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full img-zoom" alt="Label Makers">
+                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider text-stone-900 border border-stone-200">
+                            Labels
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-medium text-stone-900 mb-2 group-hover:text-[#3F4A3C] transition-colors leading-tight">Best Bluetooth Label Makers</h3>
+                    <div class="flex gap-1 text-[#EAB308] mb-3">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                    </div>
+                    <p class="text-stone-500 text-sm mb-4 line-clamp-2 leading-relaxed">Easy app interfaces and durable tape. Comparing Brother vs. Niimbot.</p>
+                    <span class="text-xs font-semibold text-stone-900 border-b border-stone-300 pb-0.5 group-hover:border-[#3F4A3C] transition-colors">Read Review</span>
+                </article>
+
+                <!-- Review 3 -->
+                <article class="group cursor-pointer hover-card-lift reveal delay-300">
+                    <div class="relative overflow-hidden rounded-2xl bg-stone-200 aspect-[5/4] mb-5">
+                        <img src="https://images.unsplash.com/photo-1622372738946-62e02505feb3?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full img-zoom" alt="Closet Systems">
+                        <div class="absolute top-4 left-4 bg-white/95 backdrop-blur px-3 py-1.5 rounded-md text-[10px] font-bold uppercase tracking-wider text-stone-900 border border-stone-200">
+                            Closets
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-medium text-stone-900 mb-2 group-hover:text-[#3F4A3C] transition-colors leading-tight">DIY Closet Systems Ranked</h3>
+                    <div class="flex gap-1 text-[#EAB308] mb-3">
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                        <i data-lucide="star-half" class="w-3.5 h-3.5 text-stone-300"></i>
+                    </div>
+                    <p class="text-stone-500 text-sm mb-4 line-clamp-2 leading-relaxed">Transform your wardrobe for under $300. We installed the top 3 contenders.</p>
+                    <span class="text-xs font-semibold text-stone-900 border-b border-stone-300 pb-0.5 group-hover:border-[#3F4A3C] transition-colors">Read Review</span>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) EXPLORE BY SPACE -->
+    <section id="spaces" class="py-24 bg-[#FAFAF9]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12 reveal">
+                <div>
+                    <h2 class="text-4xl text-stone-900 mb-2">Explore by Space</h2>
+                    <p class="text-stone-500 font-light">Tackle the clutter, one room at a time.</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 reveal delay-100">
+                <!-- Card 1 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-stone-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&amp;fit=crop&amp;q=80&amp;w=600" class="object-cover w-full h-full img-zoom" alt="Kitchen">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="text-lg font-medium text-stone-900 mb-1 group-hover:text-[#3F4A3C] transition-colors">Kitchen</h3>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-stone-100 mb-4">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/30104e3c-5eea-4b93-93e9-5313698a7156_1600w.webp" class="object-cover w-full h-full img-zoom" alt="Bedroom">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="text-lg font-medium text-stone-900 mb-1 group-hover:text-[#3F4A3C] transition-colors">Bedroom</h3>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-stone-100 mb-4">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=600" class="object-cover w-full h-full img-zoom" alt="Bathroom">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="text-lg font-medium text-stone-900 mb-1 group-hover:text-[#3F4A3C] transition-colors">Bathroom</h3>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-2xl aspect-[4/3] bg-stone-100 mb-4">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="object-cover w-full h-full img-zoom" alt="Office">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
+                    </div>
+                    <h3 class="text-lg font-medium text-stone-900 mb-1 group-hover:text-[#3F4A3C] transition-colors">Home Office</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5) GUIDES TO HELP YOU GET THERE -->
+    <section id="guides" class="py-24 bg-white border-y border-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-10 flex justify-between items-end reveal">
+            <h2 class="text-4xl text-stone-900">Guides to Help You Get There</h2>
+            <a href="#all-guides" class="text-xs font-semibold uppercase tracking-wider text-stone-400 hover:text-[#3F4A3C] transition-colors">See all guides</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal delay-100">
+            <!-- Guide 1 -->
+            <div class="group cursor-pointer bg-white rounded-2xl border border-stone-200 p-4 hover-card-lift">
+                <div class="aspect-[16/10] rounded-xl overflow-hidden mb-4 relative bg-stone-100">
+                    <img src="https://images.unsplash.com/photo-1484101403633-562f891dc89a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold uppercase text-stone-600">
+                        Method
+                    </div>
+                </div>
+                <h3 class="text-lg font-medium text-stone-900 mb-2 group-hover:text-[#3F4A3C] transition-colors">Decluttering 101</h3>
+                <p class="text-sm text-stone-500 mb-4 line-clamp-2">Where to start when you feel overwhelmed. A 3-step process for any room.</p>
+                <span class="text-xs font-semibold text-[#3F4A3C]">Read Guide →</span>
+            </div>
+
+            <!-- Guide 2 -->
+            <div class="group cursor-pointer bg-white rounded-2xl border border-stone-200 p-4 hover-card-lift">
+                <div class="aspect-[16/10] rounded-xl overflow-hidden mb-4 relative bg-stone-100">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold uppercase text-stone-600">
+                        Pantry
+                    </div>
+                </div>
+                <h3 class="text-lg font-medium text-stone-900 mb-2 group-hover:text-[#3F4A3C] transition-colors">The Decanting Debate</h3>
+                <p class="text-sm text-stone-500 mb-4 line-clamp-2">When to take food out of the box, and when it's just a waste of time and money.</p>
+                <span class="text-xs font-semibold text-[#3F4A3C]">Read Guide →</span>
+            </div>
+
+            <!-- Guide 3 -->
+            <div class="group cursor-pointer bg-white rounded-2xl border border-stone-200 p-4 hover-card-lift">
+                <div class="aspect-[16/10] rounded-xl overflow-hidden mb-4 relative bg-stone-100">
+                    <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" class="w-full h-full object-cover img-zoom">
+                    <div class="absolute top-2 right-2 bg-white/90 backdrop-blur px-2 py-0.5 rounded text-[10px] font-bold uppercase text-stone-600">
+                        Tech
+                    </div>
+                </div>
+                <h3 class="text-lg font-medium text-stone-900 mb-2 group-hover:text-[#3F4A3C] transition-colors">Digital &amp; Physical File Org</h3>
+                <p class="text-sm text-stone-500 mb-4 line-clamp-2">Merging your paper pile with your cloud storage for a true paperless office.</p>
+                <span class="text-xs font-semibold text-[#3F4A3C]">Read Guide →</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6) ALL GUIDES + FILTER -->
+    <section id="all-guides" class="py-24 bg-[#FAFAF9]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 reveal border-b border-stone-200 pb-4">
+                <h2 class="text-4xl text-stone-900">All Organization Guides</h2>
+                
+                <!-- Simple Filter UI -->
+                <div class="flex gap-6">
+                    <button class="text-sm font-semibold text-stone-900 pb-4 -mb-4 border-b-2 border-stone-900">Newest</button>
+                    <button class="text-sm font-medium text-stone-500 pb-4 -mb-4 border-b-2 border-transparent hover:text-stone-900 transition-colors">Popular</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 reveal delay-100">
+                <!-- List Item 1 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-stone-200 mb-3">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&amp;fit=crop&amp;q=80&amp;w=600" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">Wardrobe</div>
+                    <h3 class="text-base font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors">Folding Techniques for Drawers</h3>
+                </a>
+
+                <!-- List Item 2 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-stone-200 mb-3">
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&amp;fit=crop&amp;q=80&amp;w=600" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">Garage</div>
+                    <h3 class="text-base font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors">Heavy Duty Shelving Setup</h3>
+                </a>
+
+                <!-- List Item 3 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-stone-200 mb-3">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">Entryway</div>
+                    <h3 class="text-base font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors">Shoe Storage for Large Families</h3>
+                </a>
+
+                <!-- List Item 4 -->
+                <a href="#" class="group block">
+                    <div class="relative overflow-hidden rounded-xl aspect-[3/2] bg-stone-200 mb-3">
+                        <img src="https://images.unsplash.com/photo-1581557991964-125469da3b8a?auto=format&amp;fit=crop&amp;q=80&amp;w=600" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-1">Toy Room</div>
+                    <h3 class="text-base font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors">Managing the Toy Rotation</h3>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7) EXPLORE OTHER GOALS -->
+    <section class="py-24 bg-white border-t border-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center mb-12 reveal">
+                <h2 class="text-4xl text-stone-900">Explore Other Goals</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 reveal delay-100">
+                <!-- Goal 1 -->
+                <a href="#" class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm hover-card-lift group">
+                    <div class="w-12 h-12 bg-stone-50 rounded-xl flex items-center justify-center text-stone-600 group-hover:bg-[#3F4A3C] group-hover:text-white transition-colors mb-5">
+                        <i data-lucide="armchair" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-stone-900 mb-2">Ergonomics</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">Comfort for the long haul.</p>
+                </a>
+
+                <!-- Goal 2 -->
+                <a href="#" class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm hover-card-lift group">
+                    <div class="w-12 h-12 bg-stone-50 rounded-xl flex items-center justify-center text-stone-600 group-hover:bg-[#3F4A3C] group-hover:text-white transition-colors mb-5">
+                        <i data-lucide="lamp-desk" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-stone-900 mb-2">Lighting</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">Mood and task illumination.</p>
+                </a>
+
+                <!-- Goal 3 -->
+                <a href="#" class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm hover-card-lift group">
+                    <div class="w-12 h-12 bg-stone-50 rounded-xl flex items-center justify-center text-stone-600 group-hover:bg-[#3F4A3C] group-hover:text-white transition-colors mb-5">
+                        <i data-lucide="mic" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-stone-900 mb-2">Acoustics</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">Sound dampening &amp; privacy.</p>
+                </a>
+
+                <!-- Goal 4 -->
+                <a href="#" class="bg-white p-6 rounded-2xl border border-stone-100 shadow-sm hover-card-lift group">
+                    <div class="w-12 h-12 bg-stone-50 rounded-xl flex items-center justify-center text-stone-600 group-hover:bg-[#3F4A3C] group-hover:text-white transition-colors mb-5">
+                        <i data-lucide="flower-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-stone-900 mb-2">Decor</h3>
+                    <p class="text-sm text-stone-500 leading-relaxed">Aesthetics and finishing touches.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8) TRUST / METHODOLOGY -->
+    <section class="py-24 bg-[#3F4A3C] text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif mb-16">We buy it. We break it. You buy better.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="wind" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Calm</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Reduce visual noise, increase ease. We choose designs that disappear into your life.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Practical</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Prioritize what actually helps day-to-day. No single-use gadgets or fragile trends.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Quality</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Buy once when possible. Skip gimmicks. We look for materials that age gracefully.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9) NEWSLETTER -->
+    <section id="newsletter" class="py-24 bg-stone-50 border-b border-stone-200">
+        <div class="max-w-xl mx-auto px-6 text-center reveal">
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-stone-200 flex items-center justify-center mx-auto mb-6 text-[#3F4A3C]">
+                <i data-lucide="mail" class="w-7 h-7"></i>
+            </div>
+            <h2 class="text-4xl font-serif text-stone-900 mb-4">Join the Inner Circle</h2>
+            <p class="text-stone-500 mb-8 font-light leading-relaxed">
+                A calm weekly email: one great find, one practical guide. No clutter, just value.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="email@address.com" class="flex-1 px-5 py-3.5 rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#3F4A3C]/20 focus:border-[#3F4A3C] bg-white transition-all placeholder-stone-400">
+                <button class="px-8 py-3.5 bg-[#1C1917] text-white font-semibold rounded-lg hover:bg-[#3F4A3C] transition-colors shadow-lg shadow-stone-900/10">
+                    Subscribe
+                </button>
+            </form>
+            <p class="text-[10px] text-stone-400 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- 10) FOOTER -->
+    <footer class="bg-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+                <!-- Brand -->
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-[#3F4A3C] rounded flex items-center justify-center text-white">
+                            <i data-lucide="bird" class="w-3 h-3"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-stone-900">Nest N Thrive</span>
+                    </div>
+                    <p class="text-stone-500 text-sm leading-relaxed max-w-xs mb-6">
+                        Making home life simpler through honest reviews and practical guides.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="pinterest" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Explore -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Explore</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#reviews" class="hover:text-[#3F4A3C] transition-colors">Reviews</a></li>
+                        <li><a href="#spaces" class="hover:text-[#3F4A3C] transition-colors">Spaces</a></li>
+                        <li><a href="#goals" class="hover:text-[#3F4A3C] transition-colors">Goals</a></li>
+                        <li><a href="#guides" class="hover:text-[#3F4A3C] transition-colors">Guides</a></li>
+                        <li><a href="#deals" class="hover:text-[#3F4A3C] transition-colors">Deals</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Company</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Legal</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Privacy</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Terms</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Affiliate Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-stone-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-stone-400">
+                <p>© 2024 Nest N Thrive. All rights reserved.</p>
+                <p class="text-center md:text-right max-w-lg">
+                    As an Amazon Associate, we may earn from qualifying purchases. This helps support our independent testing.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Icons
+        lucide.createIcons();
+
+        // Reveal Animation
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body></html>

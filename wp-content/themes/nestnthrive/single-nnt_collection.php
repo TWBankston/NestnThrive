@@ -1,151 +1,198 @@
 <?php
 /**
- * Single Product Collection Template
+ * Single Collection Template - V2 Aura
  *
  * @package NestNThrive
  */
 
-// Prevent direct access.
-if ( ! defined( 'ABSPATH' ) ) {
-    exit;
-}
-
 get_header();
 
-// Get current collection.
-$collection_id = get_the_ID();
+$post_id        = get_the_ID();
+$title          = get_the_title();
+$excerpt        = get_the_excerpt();
+$image_id       = get_post_thumbnail_id();
+$updated_date   = get_the_modified_date( 'F j, Y' );
+$products_count = get_post_meta( $post_id, 'nnt_products_tested', true );
+$products_data  = get_post_meta( $post_id, 'nnt_products_data', true );
+$room_terms     = wp_get_post_terms( $post_id, 'nnt_room_tax' );
+$room_name      = ! is_wp_error( $room_terms ) && ! empty( $room_terms ) ? $room_terms[0]->name : '';
+$related        = nnt_get_related_content( $post_id, 4 );
 
-// Get meta fields.
-$kicker                = get_post_meta( $collection_id, 'nnt_collection_kicker', true );
-$intro_summary         = get_post_meta( $collection_id, 'nnt_intro_summary', true );
-$disclosure_style      = get_post_meta( $collection_id, 'nnt_affiliate_disclosure_style', true );
-$updated_date          = nnt_get_updated_date( $collection_id );
-$manual_related        = get_post_meta( $collection_id, 'nnt_related_content_manual', true );
-
-// Get related content.
-if ( ! empty( $manual_related ) && is_array( $manual_related ) ) {
-    $related_posts = nnt_get_ordered_posts( $manual_related, array( 'nnt_guide', 'nnt_collection' ), 3 );
-} else {
-    $related_posts = nnt_get_related_by_terms( $collection_id, array( 'nnt_guide', 'nnt_collection' ), array( 'nnt_room_tax', 'nnt_goal_tax' ), 3 );
-}
-
-// Get taxonomy terms for breadcrumbs.
-$room_terms = get_the_terms( $collection_id, 'nnt_room_tax' );
-$goal_terms = get_the_terms( $collection_id, 'nnt_goal_tax' );
-
-// Build breadcrumb items.
-$breadcrumb_items = array();
-if ( ! is_wp_error( $room_terms ) && ! empty( $room_terms ) ) {
-    $breadcrumb_items[] = array(
-        'label' => $room_terms[0]->name,
-        'url'   => get_term_link( $room_terms[0] ),
-    );
-}
-if ( ! is_wp_error( $goal_terms ) && ! empty( $goal_terms ) ) {
-    $breadcrumb_items[] = array(
-        'label' => $goal_terms[0]->name,
-        'url'   => get_term_link( $goal_terms[0] ),
-    );
-}
+// If no products data, check if we have content
+$has_products = ! empty( $products_data ) && is_array( $products_data );
 ?>
 
-<!-- COLLECTION HERO -->
-<header class="nnt-article-hero">
-    <div class="nnt-article-hero__bg"></div>
-    
-    <div class="nnt-container nnt-container--narrow">
-        <div class="nnt-article-hero__content">
-            <!-- Breadcrumbs -->
-            <?php if ( ! empty( $breadcrumb_items ) ) : ?>
-                <div class="nnt-article-hero__crumbs">
-                    <?php foreach ( $breadcrumb_items as $index => $item ) : ?>
-                        <?php if ( $index > 0 ) : ?>
-                            <span class="nnt-article-hero__crumb-sep">/</span>
-                        <?php endif; ?>
-                        <a href="<?php echo esc_url( $item['url'] ); ?>" class="nnt-article-hero__crumb">
-                            <?php echo esc_html( $item['label'] ); ?>
-                        </a>
-                    <?php endforeach; ?>
-                </div>
-            <?php endif; ?>
-            
-            <h1 class="nnt-article-hero__title"><?php the_title(); ?></h1>
-            
-            <?php if ( $intro_summary ) : ?>
-                <p class="nnt-article-hero__summary"><?php echo esc_html( $intro_summary ); ?></p>
-            <?php endif; ?>
-            
-            <!-- Meta Info -->
-            <div class="nnt-article-hero__meta">
-                <?php if ( has_post_thumbnail() ) : ?>
-                    <div class="nnt-article-hero__author-image">
-                        <?php 
-                        // Could be author avatar; using post thumbnail as placeholder.
-                        $author_avatar = get_avatar_url( get_the_author_meta( 'ID' ), array( 'size' => 64 ) );
-                        ?>
-                        <img src="<?php echo esc_url( $author_avatar ); ?>" alt="<?php the_author(); ?>">
-                    </div>
+<!-- HERO -->
+<section class="nnt-section nnt-section--hero" style="overflow: hidden;">
+    <div class="nnt-container">
+        <div class="nnt-hero">
+            <div class="nnt-hero__content nnt-reveal">
+                <?php
+                get_template_part( 'template-parts/components/breadcrumbs-v2', null, array(
+                    'items' => array(
+                        array( 'label' => __( 'Home', 'nestnthrive' ), 'url' => home_url( '/' ) ),
+                        array( 'label' => __( 'Reviews', 'nestnthrive' ), 'url' => get_post_type_archive_link( 'nnt_collection' ) ),
+                        array( 'label' => $title ),
+                    ),
+                ) );
+                ?>
+                
+                <?php if ( $room_name ) : ?>
+                <div class="nnt-hero__badge"><?php echo esc_html( $room_name ); ?></div>
                 <?php endif; ?>
-                <span><?php printf( esc_html__( 'By %s', 'nestnthrive' ), '<span class="nnt-article-hero__author">' . get_the_author() . '</span>' ); ?></span>
-                <span class="nnt-article-hero__sep"></span>
-                <span><?php printf( esc_html__( 'Updated %s', 'nestnthrive' ), esc_html( $updated_date ) ); ?></span>
-                <span class="nnt-article-hero__sep"></span>
-                <span class="nnt-article-hero__verified">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                    <?php esc_html_e( 'Independently Reviewed', 'nestnthrive' ); ?>
-                </span>
+                
+                <h1 class="nnt-hero__title"><?php echo esc_html( $title ); ?></h1>
+                
+                <?php if ( $excerpt ) : ?>
+                <p class="nnt-hero__desc"><?php echo esc_html( $excerpt ); ?></p>
+                <?php endif; ?>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.5rem; font-size: 0.875rem; color: var(--nnt-stone-500);">
+                    <span><?php esc_html_e( 'Updated:', 'nestnthrive' ); ?> <?php echo esc_html( $updated_date ); ?></span>
+                    <?php if ( $products_count ) : ?>
+                    <span><?php echo esc_html( sprintf( __( '%d products tested', 'nestnthrive' ), intval( $products_count ) ) ); ?></span>
+                    <?php endif; ?>
+                </div>
+                
+                <div class="nnt-hero__actions">
+                    <a href="#shortlist" class="nnt-btn nnt-btn--primary">
+                        <?php esc_html_e( 'Jump to Picks', 'nestnthrive' ); ?>
+                    </a>
+                </div>
+            </div>
+
+            <div class="nnt-hero__image nnt-reveal nnt-delay-200 group">
+                <?php if ( $image_id ) : ?>
+                    <?php echo wp_get_attachment_image( $image_id, 'nnt-hero', false, array( 'class' => 'nnt-img-zoom' ) ); ?>
+                <?php else : ?>
+                    <div style="width: 100%; height: 100%; background: var(--nnt-stone-200);"></div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
-</header>
+</section>
 
-<!-- Affiliate Disclosure -->
-<?php if ( $disclosure_style === 'block' ) : ?>
-    <div class="nnt-disclosure-bar nnt-disclosure-bar--block">
-        <div class="nnt-container">
-            <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                <?php esc_html_e( 'We purchase products for testing. When you buy through our links, we may earn a commission.', 'nestnthrive' ); ?>
-            </p>
+<!-- SHORTLIST -->
+<?php if ( $has_products ) : ?>
+<section id="shortlist" class="nnt-section nnt-section--white">
+    <div class="nnt-container">
+        <div class="nnt-reveal">
+            <h2 class="nnt-section__title"><?php esc_html_e( 'The Short List', 'nestnthrive' ); ?></h2>
+            <p class="nnt-section__subtitle nnt-mb-12"><?php esc_html_e( 'Our top picks at a glance.', 'nestnthrive' ); ?></p>
+        </div>
+
+        <div class="nnt-grid nnt-grid--3 nnt-reveal nnt-delay-100">
+            <?php foreach ( $products_data as $i => $product ) : ?>
+                <div class="nnt-product-card nnt-hover-lift">
+                    <div style="padding: 1.5rem; background: var(--nnt-stone-50); border-radius: 0.75rem;">
+                        <div style="aspect-ratio: 1; background: #fff; border-radius: 0.5rem; margin-bottom: 1rem; display: flex; align-items: center; justify-content: center;">
+                            <?php if ( ! empty( $product['image_url'] ) ) : ?>
+                                <img src="<?php echo esc_url( $product['image_url'] ); ?>" alt="<?php echo esc_attr( $product['name'] ?? '' ); ?>" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                            <?php else : ?>
+                                <i data-lucide="package" style="width: 3rem; height: 3rem; color: var(--nnt-stone-300);"></i>
+                            <?php endif; ?>
+                        </div>
+                        <div style="font-size: 0.75rem; color: var(--nnt-forest); font-weight: 600; margin-bottom: 0.5rem;">
+                            <?php echo esc_html( sprintf( __( 'Pick #%d', 'nestnthrive' ), $i + 1 ) ); ?>
+                        </div>
+                        <h3 style="font-weight: 600; color: var(--nnt-stone-900); font-size: 1rem; margin-bottom: 0.5rem;">
+                            <?php echo esc_html( $product['name'] ?? '' ); ?>
+                        </h3>
+                        <?php if ( ! empty( $product['price_note'] ) ) : ?>
+                        <p style="font-size: 0.875rem; color: var(--nnt-stone-500);"><?php echo esc_html( $product['price_note'] ); ?></p>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
-<?php else : ?>
-    <div class="nnt-disclosure-bar nnt-disclosure-bar--inline">
-        <div class="nnt-container">
-            <p>
-                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-                <?php esc_html_e( 'We purchase products for testing. When you buy through our links, we may earn a commission.', 'nestnthrive' ); ?>
-            </p>
-        </div>
-    </div>
+</section>
 <?php endif; ?>
 
-<!-- MAIN CONTENT -->
-<article class="nnt-article">
+<!-- CONTENT -->
+<section class="nnt-section nnt-section--stone">
     <div class="nnt-container nnt-container--narrow">
-        <div class="nnt-article__content entry-content">
+        <div class="nnt-content nnt-reveal">
             <?php the_content(); ?>
         </div>
     </div>
-</article>
+</section>
+
+<!-- DETAILED PICKS -->
+<?php if ( $has_products ) : ?>
+<section id="detailed-picks" class="nnt-section nnt-section--white">
+    <div class="nnt-container nnt-container--narrow">
+        <div class="nnt-reveal">
+            <h2 class="nnt-section__title"><?php esc_html_e( 'Detailed Picks', 'nestnthrive' ); ?></h2>
+            <p class="nnt-section__subtitle nnt-mb-12"><?php esc_html_e( 'In-depth look at each recommendation.', 'nestnthrive' ); ?></p>
+        </div>
+
+        <?php foreach ( $products_data as $i => $product ) : ?>
+        <article class="nnt-product-detail nnt-reveal" style="background: var(--nnt-stone-50); border-radius: 1rem; padding: 2rem; margin-bottom: 2rem;">
+            <div style="display: grid; grid-template-columns: 200px 1fr; gap: 2rem;">
+                <div style="aspect-ratio: 1; background: #fff; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center;">
+                    <?php if ( ! empty( $product['image_url'] ) ) : ?>
+                        <img src="<?php echo esc_url( $product['image_url'] ); ?>" alt="<?php echo esc_attr( $product['name'] ?? '' ); ?>" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                    <?php else : ?>
+                        <i data-lucide="package" style="width: 3rem; height: 3rem; color: var(--nnt-stone-300);"></i>
+                    <?php endif; ?>
+                </div>
+                <div>
+                    <span style="font-size: 0.75rem; color: var(--nnt-forest); font-weight: 600;"><?php echo esc_html( sprintf( __( 'Pick #%d', 'nestnthrive' ), $i + 1 ) ); ?></span>
+                    <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--nnt-stone-900); margin: 0.5rem 0 1rem;"><?php echo esc_html( $product['name'] ?? '' ); ?></h3>
+                    
+                    <?php if ( ! empty( $product['pros'] ) ) : ?>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="font-size: 0.875rem; color: var(--nnt-stone-700);"><?php esc_html_e( 'Pros:', 'nestnthrive' ); ?></strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--nnt-stone-600); font-size: 0.875rem;">
+                            <?php foreach ( (array) $product['pros'] as $pro ) : ?>
+                            <li><?php echo esc_html( $pro ); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <?php if ( ! empty( $product['cons'] ) ) : ?>
+                    <div style="margin-bottom: 1rem;">
+                        <strong style="font-size: 0.875rem; color: var(--nnt-stone-700);"><?php esc_html_e( 'Cons:', 'nestnthrive' ); ?></strong>
+                        <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--nnt-stone-600); font-size: 0.875rem;">
+                            <?php foreach ( (array) $product['cons'] as $con ) : ?>
+                            <li><?php echo esc_html( $con ); ?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                    
+                    <?php if ( ! empty( $product['affiliate_url'] ) ) : ?>
+                    <a href="<?php echo esc_url( $product['affiliate_url'] ); ?>" class="nnt-btn nnt-btn--primary" target="_blank" rel="nofollow noopener" style="margin-top: 1rem;">
+                        <?php esc_html_e( 'Check Price', 'nestnthrive' ); ?>
+                        <i data-lucide="external-link" style="width: 0.875rem; height: 0.875rem; margin-left: 0.5rem;"></i>
+                    </a>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </article>
+        <?php endforeach; ?>
+    </div>
+</section>
+<?php endif; ?>
 
 <!-- RELATED CONTENT -->
-<?php if ( ! empty( $related_posts ) ) : ?>
-<section class="nnt-section nnt-section--white nnt-section--related">
+<?php if ( ! empty( $related ) ) : ?>
+<section class="nnt-section nnt-section--stone">
     <div class="nnt-container">
-        <h2 class="nnt-section__title"><?php esc_html_e( 'More for Your Space', 'nestnthrive' ); ?></h2>
-        
-        <div class="nnt-grid nnt-grid--3">
-            <?php foreach ( $related_posts as $related_post ) : ?>
-                <?php
-                get_template_part( 'template-parts/components/card', null, array(
-                    'item'         => $related_post,
-                    'type'         => $related_post->post_type,
-                    'style'        => 'default',
-                    'show_meta'    => true,
-                    'show_excerpt' => true,
-                    'image_size'   => 'nnt-card',
-                ) );
+        <div class="nnt-section__header nnt-reveal">
+            <h2 class="nnt-section__title"><?php esc_html_e( 'Related Reviews & Guides', 'nestnthrive' ); ?></h2>
+        </div>
+
+        <div class="nnt-grid nnt-grid--4 nnt-reveal nnt-delay-100">
+            <?php foreach ( $related as $item ) : ?>
+                <?php 
+                if ( get_post_type( $item ) === 'nnt_guide' ) {
+                    get_template_part( 'template-parts/components/card-guide', null, array( 'post' => $item ) );
+                } else {
+                    get_template_part( 'template-parts/components/card-review', null, array( 'post' => $item ) );
+                }
                 ?>
             <?php endforeach; ?>
         </div>
@@ -153,5 +200,7 @@ if ( ! is_wp_error( $goal_terms ) && ! empty( $goal_terms ) ) {
 </section>
 <?php endif; ?>
 
-<?php
-get_footer();
+<!-- NEWSLETTER -->
+<?php get_template_part( 'template-parts/components/newsletter-v2' ); ?>
+
+<?php get_footer(); ?>

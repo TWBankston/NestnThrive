@@ -1,0 +1,522 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Set Up an Ergonomic Standing Desk - Nest N Thrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Setup */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #FAFAF9; /* Stone-50 */
+            color: #1C1917; /* Stone-900 */
+        }
+        
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Instrument Serif', serif; 
+        }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Delay Utilities */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Card Interactions */
+        .hover-card-lift {
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .hover-card-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Image Zoom */
+        .img-zoom-container { overflow: hidden; }
+        .img-zoom { transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .group:hover .img-zoom { transform: scale(1.03); }
+
+        /* Typography spacing */
+        p { margin-bottom: 1.5em; }
+        p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3F4A3C] selection:text-white">
+
+    <!-- 1) NAV (Identical System) -->
+    <nav class="fixed top-0 w-full z-50 bg-[#FAFAF9]/85 backdrop-blur-xl border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 bg-[#3F4A3C] rounded-lg flex items-center justify-center text-white shadow-sm group-hover:bg-[#2C332A] transition-colors">
+                        <i data-lucide="bird" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-serif text-2xl tracking-tight text-stone-900 pt-1">Nest N Thrive</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Reviews</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Spaces</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Goals</a>
+                    <a href="#" class="text-stone-900 font-medium text-sm transition-colors">Guides</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-5">
+                    <button class="text-stone-500 hover:text-stone-900 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <a href="#newsletter" class="hidden sm:block bg-[#1C1917] hover:bg-[#3F4A3C] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-colors duration-300 shadow-md shadow-stone-900/5">
+                        Subscribe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1) HERO SECTION -->
+    <header class="pt-32 pb-12 md:pt-40 md:pb-16 border-b border-stone-100 bg-white">
+        <div class="max-w-3xl mx-auto px-6 reveal">
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 text-xs font-medium text-stone-400 mb-8 uppercase tracking-wider">
+                <a href="#" class="hover:text-stone-900 transition-colors">Home</a>
+                <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                <a href="#" class="hover:text-stone-900 transition-colors">Guides</a>
+                <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                <span class="text-[#3F4A3C]">Office Ergonomics</span>
+            </div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl text-stone-900 leading-[1.1] mb-6 tracking-tight font-medium">
+                How to Set Up an Ergonomic Standing Desk Correctly
+            </h1>
+            
+            <p class="text-lg md:text-xl text-stone-500 leading-relaxed font-light mb-8 max-w-2xl">
+                Buying the desk is only the first step. Here is a complete walkthrough on height adjustment, monitor placement, and cable management to prevent back pain.
+            </p>
+            
+            <!-- Meta Row -->
+            <div class="flex flex-wrap items-center gap-4 md:gap-6 text-xs font-semibold text-stone-500 tracking-wide uppercase border-t border-stone-100 pt-6">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-full bg-stone-200 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&amp;fit=crop&amp;q=80&amp;w=100" class="object-cover w-full h-full">
+                    </div>
+                    <span class="text-stone-900">James O.</span>
+                </div>
+                <span class="w-1 h-1 rounded-full bg-stone-300"></span>
+                <span>8 Min Read</span>
+                <span class="w-1 h-1 rounded-full bg-stone-300"></span>
+                <span>Updated Oct 2023</span>
+            </div>
+
+            <!-- Optional Subtle CTAs -->
+            <div class="flex gap-4 mt-8">
+                <a href="#steps" class="text-sm font-semibold text-[#3F4A3C] hover:text-stone-900 transition-colors flex items-center gap-1">
+                    Jump to Steps <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTENT WRAPPER -->
+    <article class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+
+        <!-- 2) INTRODUCTION -->
+        <section class="reveal mb-16">
+            <p class="text-lg text-stone-600 leading-relaxed">
+                Many of us invest hundreds of dollars into a motorized standing desk, assemble it, and then proceed to use it with the exact same poor posture we had when sitting. We stand too long, we slouch, or we crane our necks to look at laptop screens sitting far below eye level.
+            </p>
+            <p class="text-lg text-stone-600 leading-relaxed">
+                The benefits of a standing desk—increased energy, better circulation, reduced back pressure—only happen if the mechanics of your setup are tuned to your body.
+            </p>
+            <p class="text-lg text-stone-600 leading-relaxed">
+                This guide is for anyone who has just purchased a standing desk or is experiencing fatigue despite having one. We will cover the specific measurements you need to know.
+            </p>
+        </section>
+
+        <!-- 3) KEY TAKEAWAYS -->
+        <section class="reveal bg-stone-100 rounded-2xl p-8 mb-20 border border-stone-200">
+            <h3 class="text-xl font-serif text-stone-900 mb-4 flex items-center gap-2">
+                <i data-lucide="sparkles" class="w-5 h-5 text-[#3F4A3C]"></i>
+                Key Takeaways
+            </h3>
+            <ul class="space-y-3">
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-[#3F4A3C] mt-1 shrink-0"></i>
+                    <span class="text-stone-700 text-sm md:text-base leading-relaxed">Your elbows should form a 90-degree angle; this dictates your desk height.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-[#3F4A3C] mt-1 shrink-0"></i>
+                    <span class="text-stone-700 text-sm md:text-base leading-relaxed">The top of your monitor should be at or slightly below eye level.</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <i data-lucide="check" class="w-4 h-4 text-[#3F4A3C] mt-1 shrink-0"></i>
+                    <span class="text-stone-700 text-sm md:text-base leading-relaxed">Movement is key: aim to stand for 15-20 minutes per hour, not all day.</span>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 4) STEP-BY-STEP CONTENT -->
+        <section id="steps" class="space-y-20">
+            
+            <!-- Step 1 -->
+            <div class="reveal group">
+                <div class="flex items-baseline gap-4 mb-4">
+                    <span class="font-serif text-5xl text-stone-200 group-hover:text-[#3F4A3C]/20 transition-colors duration-500">01</span>
+                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900">Find Your Neutral Elbow Height</h2>
+                </div>
+                <div class="pl-0 md:pl-16">
+                    <p class="text-stone-600 leading-relaxed">
+                        The most common mistake is setting the desk too high, which causes your shoulders to shrug up towards your ears, leading to tension headaches and neck pain.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        Stand up straight with your shoulders relaxed (drop them down). Bend your elbows to 90 degrees, as if you are typing on an invisible keyboard. Measure the distance from the floor to your elbow. This is your ideal standing desk height. Your forearms should rest parallel to the floor.
+                    </p>
+                    <figure class="my-8 rounded-xl overflow-hidden bg-stone-100 border border-stone-200 shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" alt="Person typing with 90 degree elbow angle" class="w-full h-auto object-cover opacity-90">
+                        <figcaption class="px-4 py-3 text-xs text-stone-500 bg-stone-50 border-t border-stone-100 text-center italic">
+                            Relax shoulders. Forearms parallel. No reaching up.
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="reveal group">
+                <div class="flex items-baseline gap-4 mb-4">
+                    <span class="font-serif text-5xl text-stone-200 group-hover:text-[#3F4A3C]/20 transition-colors duration-500">02</span>
+                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900">Fix Your Monitor Height</h2>
+                </div>
+                <div class="pl-0 md:pl-16">
+                    <p class="text-stone-600 leading-relaxed">
+                        Looking down at a screen puts immense pressure on your cervical spine. This is "tech neck."
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        The top third of your monitor screen should be at eye level. When you look at the middle of the screen, your eyes should be looking slightly downward, but your neck should remain neutral. If you use a laptop, this means you <strong>must</strong> use an external monitor or a laptop stand with an external keyboard.
+                    </p>
+                    
+                    <!-- 5) INLINE PRODUCT CALLOUT -->
+                    <div class="my-10 bg-white border border-stone-200 rounded-xl p-4 flex flex-col sm:flex-row items-center gap-6 shadow-sm hover:shadow-md transition-shadow">
+                        <div class="w-20 h-20 bg-stone-100 rounded-lg shrink-0 flex items-center justify-center">
+                            <i data-lucide="monitor" class="w-8 h-8 text-stone-400"></i>
+                        </div>
+                        <div class="flex-1 text-center sm:text-left">
+                            <span class="text-[10px] font-bold uppercase tracking-wider text-[#3F4A3C] mb-1 block">Helpful Pick</span>
+                            <h4 class="text-base font-semibold text-stone-900 mb-1">Single Monitor Arm</h4>
+                            <p class="text-sm text-stone-500 mb-0">The easiest way to get precise height adjustments without stacking books.</p>
+                        </div>
+                        <a href="#" class="text-xs font-semibold bg-stone-100 hover:bg-stone-200 text-stone-900 px-4 py-2 rounded-lg transition-colors shrink-0">
+                            View Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="reveal group">
+                <div class="flex items-baseline gap-4 mb-4">
+                    <span class="font-serif text-5xl text-stone-200 group-hover:text-[#3F4A3C]/20 transition-colors duration-500">03</span>
+                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900">Manage the Cable Slack</h2>
+                </div>
+                <div class="pl-0 md:pl-16">
+                    <p class="text-stone-600 leading-relaxed">
+                        This is a safety step often overlooked. When you raise your desk, your cables need enough slack to travel up with it. If a power cord is too short, it can snag, unplug your PC mid-work, or even pull equipment off the desk.
+                    </p>
+                    <p class="text-stone-600 leading-relaxed">
+                        Mount a power strip to the underside of your desk. This way, only one thick extension cord needs to run from the desk to the wall, and everything else moves with the desk surface.
+                    </p>
+                </div>
+            </div>
+
+             <!-- Step 4 -->
+             <div class="reveal group">
+                <div class="flex items-baseline gap-4 mb-4">
+                    <span class="font-serif text-5xl text-stone-200 group-hover:text-[#3F4A3C]/20 transition-colors duration-500">04</span>
+                    <h2 class="text-2xl md:text-3xl font-serif text-stone-900">Support Your Feet</h2>
+                </div>
+                <div class="pl-0 md:pl-16">
+                    <p class="text-stone-600 leading-relaxed">
+                        Standing on a hard floor barefoot or in socks will fatigue your legs quickly. An anti-fatigue mat is essential—it introduces micro-movements in your leg muscles that aid blood flow.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- 6) COMMON MISTAKES -->
+        <section class="mt-24 reveal">
+            <h3 class="text-2xl font-serif text-stone-900 mb-8">Common Mistakes to Avoid</h3>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Mistake 1 -->
+                <div class="bg-stone-50 border border-stone-100 p-6 rounded-xl flex gap-4">
+                    <div class="mt-1 shrink-0 text-red-400">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-stone-900 text-sm mb-1">Standing Rigidly</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Don't lock your knees. Shift your weight from foot to foot. Keep a small stool nearby to rest one foot on occasionally.</p>
+                    </div>
+                </div>
+                <!-- Mistake 2 -->
+                <div class="bg-stone-50 border border-stone-100 p-6 rounded-xl flex gap-4">
+                    <div class="mt-1 shrink-0 text-red-400">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-stone-900 text-sm mb-1">Standing All Day</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Standing for 8 hours is just as bad as sitting for 8. The goal is alternation. 45 minutes sitting, 15 minutes standing.</p>
+                    </div>
+                </div>
+                <!-- Mistake 3 -->
+                <div class="bg-stone-50 border border-stone-100 p-6 rounded-xl flex gap-4">
+                    <div class="mt-1 shrink-0 text-red-400">
+                        <i data-lucide="x-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-stone-900 text-sm mb-1">Leaning on the Desk</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">If you find yourself leaning on the desk surface, you are tired. It's time to lower the desk and sit down.</p>
+                    </div>
+                </div>
+                 <!-- Tip -->
+                 <div class="bg-[#3F4A3C]/5 border border-[#3F4A3C]/10 p-6 rounded-xl flex gap-4">
+                    <div class="mt-1 shrink-0 text-[#3F4A3C]">
+                        <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-stone-900 text-sm mb-1">Pro Tip: Memory Presets</h4>
+                        <p class="text-sm text-stone-500 leading-relaxed">Save your sitting and standing heights into the keypad memory immediately so you don't have to "find" them every time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7) FAQ SECTION -->
+        <section class="mt-24 reveal">
+            <h3 class="text-2xl font-serif text-stone-900 mb-8">Frequently Asked Questions</h3>
+            <div class="space-y-3">
+                <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-medium text-stone-900 hover:text-[#3F4A3C] transition-colors">
+                        <span>How long should I stand per hour?</span>
+                        <i data-lucide="plus" class="w-4 h-4 text-stone-400 group-open:rotate-45 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-stone-500 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                        Research suggests a ratio of roughly 3:1 sitting to standing. For every 45 minutes of seated work, aim for 15 minutes of standing. Listen to your body—if your feet hurt, sit down.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-medium text-stone-900 hover:text-[#3F4A3C] transition-colors">
+                        <span>Do I need to wear shoes?</span>
+                        <i data-lucide="plus" class="w-4 h-4 text-stone-400 group-open:rotate-45 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-stone-500 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                        Supportive footwear is better than bare feet on hard floors. If you are at home, a thick anti-fatigue mat allows you to be comfortable in socks. Avoid standing in high heels or completely flat, unsupportive slippers.
+                    </div>
+                </details>
+
+                <details class="group bg-white rounded-xl border border-stone-200 overflow-hidden">
+                    <summary class="flex justify-between items-center p-5 cursor-pointer font-medium text-stone-900 hover:text-[#3F4A3C] transition-colors">
+                        <span>Is a balance board worth it?</span>
+                        <i data-lucide="plus" class="w-4 h-4 text-stone-400 group-open:rotate-45 transition-transform duration-300"></i>
+                    </summary>
+                    <div class="px-5 pb-5 text-stone-500 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                        For active standers, yes. A balance board engages your core and keeps your legs moving slightly, which prevents blood from pooling in your feet. However, master basic standing posture first before adding accessories.
+                    </div>
+                </details>
+            </div>
+        </section>
+
+    </article>
+
+    <!-- 8) RELATED CONTENT -->
+    <section class="py-24 bg-white border-y border-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-3xl font-serif text-stone-900 mb-10 tracking-tight reveal">Keep Improving Your Space</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal delay-100">
+                <!-- Related 1 -->
+                <a href="#" class="group block bg-white rounded-2xl p-4 border border-stone-200 hover-card-lift">
+                    <div class="relative overflow-hidden rounded-xl aspect-[16/10] mb-4 bg-stone-100">
+                        <img src="https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-2">Review</div>
+                    <h3 class="text-lg font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors mb-2">Best Standing Desks for Small Spaces</h3>
+                    <p class="text-sm text-stone-500 line-clamp-2">We tested stability and assembly time on 8 compact models.</p>
+                </a>
+
+                <!-- Related 2 -->
+                <a href="#" class="group block bg-white rounded-2xl p-4 border border-stone-200 hover-card-lift">
+                    <div class="relative overflow-hidden rounded-xl aspect-[16/10] mb-4 bg-stone-100">
+                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-2">Room Hub</div>
+                    <h3 class="text-lg font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors mb-2">Home Office Setup Guide</h3>
+                    <p class="text-sm text-stone-500 line-clamp-2">Lighting, acoustics, and organization for deep work.</p>
+                </a>
+
+                <!-- Related 3 -->
+                <a href="#" class="group block bg-white rounded-2xl p-4 border border-stone-200 hover-card-lift">
+                    <div class="relative overflow-hidden rounded-xl aspect-[16/10] mb-4 bg-stone-100">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full img-zoom">
+                    </div>
+                    <div class="text-[10px] font-bold uppercase tracking-wider text-stone-400 mb-2">Guide</div>
+                    <h3 class="text-lg font-medium text-stone-900 group-hover:text-[#3F4A3C] transition-colors mb-2">Cable Management Masterclass</h3>
+                    <p class="text-sm text-stone-500 line-clamp-2">How to hide every single wire in your setup.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9) TRUST STATEMENT (LOCKED) -->
+    <section class="py-24 bg-[#3F4A3C] text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center reveal">
+            <h2 class="text-4xl md:text-5xl font-serif mb-16">We buy it. We break it. You buy better.</h2>
+            
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="wind" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Calm</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Reduce visual noise, increase ease. We choose designs that disappear into your life.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="check-circle" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Practical</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Prioritize what actually helps day-to-day. No single-use gadgets or fragile trends.</p>
+                </div>
+
+                <div class="flex flex-col items-center">
+                    <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mb-6">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Quality</h3>
+                    <p class="text-stone-300 text-sm leading-relaxed max-w-xs">Buy once when possible. Skip gimmicks. We look for materials that age gracefully.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10) NEWSLETTER -->
+    <section id="newsletter" class="py-24 bg-stone-50 border-b border-stone-200">
+        <div class="max-w-xl mx-auto px-6 text-center reveal">
+            <div class="w-14 h-14 bg-white rounded-2xl shadow-sm border border-stone-200 flex items-center justify-center mx-auto mb-6 text-[#3F4A3C]">
+                <i data-lucide="mail" class="w-7 h-7"></i>
+            </div>
+            <h2 class="text-4xl font-serif text-stone-900 mb-4">Join the Inner Circle</h2>
+            <p class="text-stone-500 mb-8 font-light leading-relaxed">
+                A calm weekly email: one great find, one practical guide. No clutter, just value.
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="email@address.com" class="flex-1 px-5 py-3.5 rounded-lg border border-stone-200 focus:outline-none focus:ring-2 focus:ring-[#3F4A3C]/20 focus:border-[#3F4A3C] bg-white transition-all placeholder-stone-400">
+                <button class="px-8 py-3.5 bg-[#1C1917] text-white font-semibold rounded-lg hover:bg-[#3F4A3C] transition-colors shadow-lg shadow-stone-900/10">
+                    Subscribe
+                </button>
+            </form>
+            <p class="text-[10px] text-stone-400 mt-4">We respect your privacy. Unsubscribe at any time.</p>
+        </div>
+    </section>
+
+    <!-- 11) FOOTER -->
+    <footer class="bg-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+                <!-- Brand -->
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-[#3F4A3C] rounded flex items-center justify-center text-white">
+                            <i data-lucide="bird" class="w-3 h-3"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-stone-900">Nest N Thrive</span>
+                    </div>
+                    <p class="text-stone-500 text-sm leading-relaxed max-w-xs mb-6">
+                        Making home life simpler through honest reviews and practical guides.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="pinterest" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Explore -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Explore</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Reviews</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Spaces</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Goals</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Guides</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Deals</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Company</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Legal</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Privacy</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Terms</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Affiliate Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-stone-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-stone-400">
+                <p>© 2024 Nest N Thrive. All rights reserved.</p>
+                <p class="text-center md:text-right max-w-lg">
+                    As an Amazon Associate, we may earn from qualifying purchases. This helps support our independent testing.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal Animation Observer
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body></html>

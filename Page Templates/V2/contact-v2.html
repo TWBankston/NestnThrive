@@ -1,0 +1,336 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Nest N Thrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Setup */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #FAFAF9; /* Stone-50 */
+            color: #1C1917; /* Stone-900 */
+        }
+        
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Instrument Serif', serif; 
+        }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Utilities */
+        .tracking-tight-custom { letter-spacing: -0.025em; }
+        
+        /* Form Focus States */
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3F4A3C;
+            box-shadow: 0 0 0 2px rgba(63, 74, 60, 0.1);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#3F4A3C] selection:text-white">
+
+    <!-- 1) NAV (System Standard) -->
+    <nav class="fixed top-0 w-full z-50 bg-[#FAFAF9]/85 backdrop-blur-xl border-b border-stone-200/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-9 h-9 bg-[#3F4A3C] rounded-lg flex items-center justify-center text-white shadow-sm group-hover:bg-[#2C332A] transition-colors">
+                        <i data-lucide="bird" class="w-5 h-5"></i>
+                    </div>
+                    <span class="font-serif text-2xl tracking-tight text-stone-900 pt-1">Nest N Thrive</span>
+                </a>
+
+                <!-- Desktop Links -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Reviews</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Spaces</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Goals</a>
+                    <a href="#" class="text-stone-600 hover:text-stone-900 text-sm font-medium transition-colors">Deals</a>
+                </div>
+
+                <!-- Actions -->
+                <div class="flex items-center gap-5">
+                    <button class="text-stone-500 hover:text-stone-900 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <a href="#" class="hidden sm:block bg-[#1C1917] hover:bg-[#3F4A3C] text-white px-5 py-2.5 rounded-full text-xs font-semibold tracking-wide transition-colors duration-300 shadow-md shadow-stone-900/5">
+                        Subscribe
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2) HERO SECTION -->
+    <header class="pt-32 pb-12 md:pt-40 md:pb-16 bg-white border-b border-stone-100">
+        <div class="max-w-3xl mx-auto px-6 reveal">
+            <!-- Breadcrumbs -->
+            <div class="flex items-center gap-2 text-xs font-medium text-stone-400 mb-8 uppercase tracking-wider">
+                <a href="#" class="hover:text-stone-900 transition-colors">Home</a>
+                <i data-lucide="chevron-right" class="w-3 h-3"></i>
+                <span class="text-[#3F4A3C]">Contact</span>
+            </div>
+
+            <h1 class="text-5xl md:text-6xl text-stone-900 leading-[1] mb-6 tracking-tight-custom font-medium">
+                Get in Touch
+            </h1>
+            
+            <p class="text-xl text-stone-500 leading-relaxed font-light mb-0 max-w-xl">
+                Questions, feedback, or suggestions — we read everything.
+            </p>
+        </div>
+    </header>
+
+    <!-- 3) CONTACT OPTIONS & FORM GRID -->
+    <section class="py-16 md:py-24 bg-[#FAFAF9]">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <!-- Contact Options (Cards) -->
+            <div class="grid md:grid-cols-3 gap-6 mb-16 reveal">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200/60 shadow-sm flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center text-[#3F4A3C]">
+                        <i data-lucide="help-circle" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-stone-900 mb-1">General Inquiries</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">Questions about our content or specific product coverage.</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200/60 shadow-sm flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center text-[#3F4A3C]">
+                        <i data-lucide="pen-tool" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-stone-900 mb-1">Editorial Feedback</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">Spotted an error? Have a suggestion for an update?</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-2xl border border-stone-200/60 shadow-sm flex flex-col gap-4">
+                    <div class="w-10 h-10 rounded-full bg-stone-50 border border-stone-100 flex items-center justify-center text-[#3F4A3C]">
+                        <i data-lucide="briefcase" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-stone-900 mb-1">Partnerships</h3>
+                        <p class="text-sm text-stone-500 leading-relaxed">For transparent collaboration inquiries only.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Split: Form vs. Policy -->
+            <div class="grid lg:grid-cols-12 gap-12 lg:gap-20 items-start reveal">
+                
+                <!-- Left: Form -->
+                <div class="lg:col-span-7 bg-white p-8 md:p-10 rounded-3xl border border-stone-200 shadow-sm">
+                    <h2 class="text-3xl font-serif text-stone-900 mb-8">Send a Message</h2>
+                    
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-stone-900 uppercase tracking-wide">Name</label>
+                                <input type="text" class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-200 text-stone-900 placeholder-stone-400 transition-colors" placeholder="Jane Doe">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="text-xs font-semibold text-stone-900 uppercase tracking-wide">Email</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-200 text-stone-900 placeholder-stone-400 transition-colors" placeholder="jane@example.com">
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-stone-900 uppercase tracking-wide">Subject</label>
+                            <div class="relative">
+                                <select class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-200 text-stone-900 appearance-none cursor-pointer focus:outline-none focus:border-[#3F4A3C]">
+                                    <option>General Inquiry</option>
+                                    <option>Editorial Correction</option>
+                                    <option>Partnership Proposal</option>
+                                    <option>Other</option>
+                                </select>
+                                <i data-lucide="chevron-down" class="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label class="text-xs font-semibold text-stone-900 uppercase tracking-wide">Message</label>
+                            <textarea rows="5" class="w-full px-4 py-3 rounded-lg bg-stone-50 border border-stone-200 text-stone-900 placeholder-stone-400 transition-colors resize-none" placeholder="How can we help?"></textarea>
+                        </div>
+
+                        <div class="pt-2">
+                            <button type="button" class="bg-[#1C1917] hover:bg-[#3F4A3C] text-white px-8 py-3.5 rounded-lg text-sm font-semibold tracking-wide transition-colors duration-300 shadow-md shadow-stone-900/10 w-full sm:w-auto">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Right: Editorial Policy / What We Don't Do -->
+                <div class="lg:col-span-5 space-y-8">
+                    <div class="prose prose-stone">
+                        <h2 class="text-2xl font-serif text-stone-900 mb-6">Before You Write</h2>
+                        <p class="text-stone-500 leading-relaxed mb-8 text-sm">
+                            To maintain editorial integrity and respect your time, please note what we do not accept.
+                        </p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Policy Item 1 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-red-50 text-red-900/60 flex items-center justify-center shrink-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg text-stone-900">No Paid Reviews</h4>
+                                <p class="text-sm text-stone-500 mt-1 leading-relaxed">
+                                    We do not accept payment in exchange for reviews or guaranteed positive coverage. All opinions are our own.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Policy Item 2 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-red-50 text-red-900/60 flex items-center justify-center shrink-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg text-stone-900">No Link Insertions</h4>
+                                <p class="text-sm text-stone-500 mt-1 leading-relaxed">
+                                    We do not participate in link exchanges or sell text links within our existing articles.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Policy Item 3 -->
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 w-6 h-6 rounded-full bg-red-50 text-red-900/60 flex items-center justify-center shrink-0">
+                                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg text-stone-900">No Guest Posts</h4>
+                                <p class="text-sm text-stone-500 mt-1 leading-relaxed">
+                                    Our content is produced in-house to ensure consistent testing standards.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Divider -->
+                    <div class="h-px bg-stone-200 w-full my-8"></div>
+
+                    <!-- Address/Info -->
+                    <div class="flex items-start gap-4 p-6 bg-[#3F4A3C]/5 border border-[#3F4A3C]/10 rounded-xl">
+                        <i data-lucide="info" class="w-5 h-5 text-[#3F4A3C] mt-0.5 shrink-0"></i>
+                        <p class="text-xs text-stone-600 leading-relaxed">
+                            <strong>Note for PR Agencies:</strong> If you are sending a press release, please include full specs and retail availability. We prioritize products available to the general public.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4) FOOTER -->
+    <footer class="bg-white pt-16 pb-8 border-t border-stone-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10 mb-16">
+                <!-- Brand -->
+                <div class="col-span-2 lg:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-6 h-6 bg-[#3F4A3C] rounded flex items-center justify-center text-white">
+                            <i data-lucide="bird" class="w-3 h-3"></i>
+                        </div>
+                        <span class="font-serif text-lg font-bold text-stone-900">Nest N Thrive</span>
+                    </div>
+                    <p class="text-stone-500 text-sm leading-relaxed max-w-xs mb-6">
+                        Making home life simpler through honest reviews and practical guides.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-stone-400 hover:text-[#3F4A3C] transition-colors"><i data-lucide="pinterest" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Explore -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Explore</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Reviews</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Spaces</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Goals</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Guides</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Deals</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Company</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">About Us</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Contact</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Careers</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal -->
+                <div>
+                    <h4 class="font-semibold text-stone-900 text-sm mb-5">Legal</h4>
+                    <ul class="space-y-3 text-sm text-stone-500">
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Privacy</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Terms</a></li>
+                        <li><a href="#" class="hover:text-[#3F4A3C] transition-colors">Affiliate Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-stone-100 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-stone-400">
+                <p>© 2024 Nest N Thrive. All rights reserved.</p>
+                <p class="text-center md:text-right max-w-lg">
+                    As an Amazon Associate, we may earn from qualifying purchases. This helps support our independent testing.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Reveal Animation Observer
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body></html>
