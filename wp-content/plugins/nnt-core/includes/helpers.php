@@ -207,27 +207,29 @@ function nnt_user_can_edit(): bool {
  * @param int $post_id Post ID.
  * @return string
  */
-function nnt_get_reading_time( int $post_id ): string {
-    $manual_time = get_post_meta( $post_id, 'nnt_reading_time', true );
-    
-    if ( ! empty( $manual_time ) ) {
-        return $manual_time;
+if ( ! function_exists( 'nnt_get_reading_time' ) ) {
+    function nnt_get_reading_time( int $post_id ): string {
+        $manual_time = get_post_meta( $post_id, 'nnt_reading_time', true );
+        
+        if ( ! empty( $manual_time ) ) {
+            return $manual_time;
+        }
+        
+        $content    = get_post_field( 'post_content', $post_id );
+        $word_count = str_word_count( wp_strip_all_tags( $content ) );
+        $minutes    = max( 1, ceil( $word_count / 200 ) );
+        
+        return sprintf( '%d min read', $minutes );
     }
-    
-    $content    = get_post_field( 'post_content', $post_id );
-    $word_count = str_word_count( wp_strip_all_tags( $content ) );
-    $minutes    = max( 1, ceil( $word_count / 200 ) );
-    
-    return sprintf( '%d min read', $minutes );
 }
 
 /**
- * Get all rooms (terms from nnt_room_tax).
+ * Get all room terms (from nnt_room_tax).
  *
  * @param bool $hide_empty Whether to hide terms with no posts.
  * @return WP_Term[]
  */
-function nnt_get_all_rooms( bool $hide_empty = true ): array {
+function nnt_get_all_room_terms( bool $hide_empty = true ): array {
     $terms = get_terms(
         array(
             'taxonomy'   => 'nnt_room_tax',
@@ -239,12 +241,12 @@ function nnt_get_all_rooms( bool $hide_empty = true ): array {
 }
 
 /**
- * Get all goals (terms from nnt_goal_tax).
+ * Get all goal terms (from nnt_goal_tax).
  *
  * @param bool $hide_empty Whether to hide terms with no posts.
  * @return WP_Term[]
  */
-function nnt_get_all_goals( bool $hide_empty = true ): array {
+function nnt_get_all_goal_terms( bool $hide_empty = true ): array {
     $terms = get_terms(
         array(
             'taxonomy'   => 'nnt_goal_tax',
