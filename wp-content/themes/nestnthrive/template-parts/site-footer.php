@@ -16,10 +16,15 @@ if ( ! defined( 'ABSPATH' ) ) {
             <!-- Brand Column -->
             <div class="nnt-footer__brand">
                 <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nnt-footer__logo">
-                    <div class="nnt-footer__logo-icon">
-                        <span>N</span>
-                    </div>
-                    <span class="nnt-footer__site-title"><?php bloginfo( 'name' ); ?></span>
+                    <img 
+                        src="<?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_75px.png' ) ); ?>" 
+                        srcset="<?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_75px.png' ) ); ?> 1x, 
+                                <?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_120px.png' ) ); ?> 2x"
+                        alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" 
+                        class="nnt-footer__logo-img"
+                        width="75"
+                        height="auto"
+                    >
                 </a>
                 <p class="nnt-footer__tagline">
                     <?php esc_html_e( 'Helping you transform everyday homes into calm, functional spaces.', 'nestnthrive' ); ?>

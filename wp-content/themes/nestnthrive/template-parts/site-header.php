@@ -21,10 +21,15 @@ if ( ! defined( 'ABSPATH' ) ) {
                 <!-- Logo / Site Title -->
                 <div class="nnt-header__brand">
                     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="nnt-header__logo" rel="home">
-                        <div class="nnt-header__logo-icon">
-                            <span class="nnt-header__logo-letter">N</span>
-                        </div>
-                        <span class="nnt-header__site-title"><?php bloginfo( 'name' ); ?></span>
+                        <img 
+                            src="<?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_120px.png' ) ); ?>" 
+                            srcset="<?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_120px.png' ) ); ?> 1x, 
+                                    <?php echo esc_url( get_theme_file_uri( 'assets/images/nestnthrive_logo_320px.png' ) ); ?> 2x"
+                            alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>" 
+                            class="nnt-header__logo-img"
+                            width="120"
+                            height="auto"
+                        >
                     </a>
                 </div>
 
