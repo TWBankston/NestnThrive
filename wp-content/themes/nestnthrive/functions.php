@@ -254,24 +254,26 @@ function nnt_get_posts_for_term( $taxonomy, $term_id, $post_type, $limit = -1, $
  * @param int $post_id Post ID.
  * @return string
  */
-function nnt_get_reading_time( $post_id = null ) {
-    if ( ! $post_id ) {
-        $post_id = get_the_ID();
-    }
+if ( ! function_exists( 'nnt_get_reading_time' ) ) {
+    function nnt_get_reading_time( $post_id = null ) {
+        if ( ! $post_id ) {
+            $post_id = get_the_ID();
+        }
 
-    // Check for manual reading time.
-    $manual = get_post_meta( $post_id, 'nnt_reading_time', true );
-    
-    if ( ! empty( $manual ) ) {
-        return $manual;
+        // Check for manual reading time.
+        $manual = get_post_meta( $post_id, 'nnt_reading_time', true );
+        
+        if ( ! empty( $manual ) ) {
+            return $manual;
+        }
+        
+        // Calculate from content.
+        $content    = get_post_field( 'post_content', $post_id );
+        $word_count = str_word_count( wp_strip_all_tags( $content ) );
+        $minutes    = max( 1, ceil( $word_count / 200 ) );
+        
+        return sprintf( '%d min read', $minutes );
     }
-    
-    // Calculate from content.
-    $content    = get_post_field( 'post_content', $post_id );
-    $word_count = str_word_count( wp_strip_all_tags( $content ) );
-    $minutes    = max( 1, ceil( $word_count / 200 ) );
-    
-    return sprintf( '%d min read', $minutes );
 }
 
 /**

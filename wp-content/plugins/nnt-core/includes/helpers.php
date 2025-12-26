@@ -207,20 +207,18 @@ function nnt_user_can_edit(): bool {
  * @param int $post_id Post ID.
  * @return string
  */
-if ( ! function_exists( 'nnt_get_reading_time' ) ) {
-    function nnt_get_reading_time( int $post_id ): string {
-        $manual_time = get_post_meta( $post_id, 'nnt_reading_time', true );
-        
-        if ( ! empty( $manual_time ) ) {
-            return $manual_time;
-        }
-        
-        $content    = get_post_field( 'post_content', $post_id );
-        $word_count = str_word_count( wp_strip_all_tags( $content ) );
-        $minutes    = max( 1, ceil( $word_count / 200 ) );
-        
-        return sprintf( '%d min read', $minutes );
+function nnt_core_get_reading_time( int $post_id ): string {
+    $manual_time = get_post_meta( $post_id, 'nnt_reading_time', true );
+    
+    if ( ! empty( $manual_time ) ) {
+        return $manual_time;
     }
+    
+    $content    = get_post_field( 'post_content', $post_id );
+    $word_count = str_word_count( wp_strip_all_tags( $content ) );
+    $minutes    = max( 1, ceil( $word_count / 200 ) );
+    
+    return sprintf( '%d min read', $minutes );
 }
 
 /**
