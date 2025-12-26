@@ -117,13 +117,14 @@ a:focus {
     max-width: 42rem;
 }
 
-.nnt-archive-hero__title {
+.nnt-archive-hero .nnt-archive-hero__title,
+.nnt-section--hero .nnt-archive-hero__title {
     font-family: var(--wp--preset--font-family--heading);
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 400;
     margin: 0 0 1rem;
     line-height: 1.2;
-    color: var(--wp--preset--color--off-white);
+    color: #f5f5f4 !important;
 }
 
 .nnt-archive-hero__subtitle {
