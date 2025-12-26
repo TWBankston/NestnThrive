@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/comparison-table",
+    "version": "1.0.0",
+    "title": "Comparison Table",
+    "category": "nnt-blocks",
+    "icon": "editor-table",
+    "description": "Display a product comparison table.",
+    "keywords": ["comparison", "table", "products", "compare"],
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Product Comparison"
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

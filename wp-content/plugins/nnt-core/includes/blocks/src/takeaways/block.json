@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/takeaways",
+    "version": "1.0.0",
+    "title": "Takeaways",
+    "category": "nnt-blocks",
+    "icon": "lightbulb",
+    "description": "Display key takeaways in a styled box.",
+    "keywords": ["takeaways", "summary", "key points", "highlights"],
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Key Takeaways"
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

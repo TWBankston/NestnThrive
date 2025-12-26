@@ -1,0 +1,329 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Nest N Thrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Design System & Utilities */
+        body { font-family: 'Inter', sans-serif; background-color: #F7F4EF; color: #202329; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+        /* Smooth Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Typography refinements */
+        .text-balance { text-wrap: balance; }
+        
+        /* Custom image scaling */
+        .image-scale-hover {
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .group:hover .image-scale-hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#E0A456] selection:text-white overflow-x-hidden">
+
+    <!-- NAVIGATION (Global) -->
+    <nav class="fixed transition-all duration-300 bg-[#202329]/95 w-full z-50 border-white/5 border-b backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <a href="/" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center border border-white/10 group-hover:bg-white/15 transition-colors">
+                            <span class="font-serif text-[#E0A456] text-xl font-semibold">N</span>
+                        </div>
+                        <span class="text-white font-serif text-xl tracking-tight font-medium">Nest N Thrive</span>
+                    </a>
+                </div>
+                
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">Shop by Room</a>
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">Shop by Goal</a>
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">Guides</a>
+                        <a href="#" class="text-[#E0A456] transition-colors text-sm font-medium">About</a>
+                    </div>
+                </div>
+
+                <div class="hidden md:block">
+                    <a href="#newsletter" class="bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-full text-xs font-medium transition-all duration-300 border border-transparent hover:border-white/30">
+                        Join the List
+                    </a>
+                </div>
+
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="text-slate-400 hover:text-white">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 1. HERO SECTION -->
+    <header class="relative bg-[#202329] pt-32 pb-24 lg:pt-48 lg:pb-32 border-b border-white/5 overflow-hidden">
+        <!-- Abstract background accent -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[80rem] h-[40rem] bg-[#E0A456]/5 rounded-full blur-3xl opacity-40 pointer-events-none -mt-40"></div>
+        
+        <div class="max-w-3xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl lg:text-6xl font-medium text-white tracking-tight leading-[1.1] mb-8 reveal text-balance font-serif">
+                Thoughtful upgrades for homes that are lived in.
+            </h1>
+            
+            <p class="text-lg lg:text-xl text-slate-300 font-light leading-relaxed reveal delay-100 text-balance max-w-2xl mx-auto">
+                Nest N Thrive is a digital publication dedicated to clarity in home design. We filter out the noise to help you build a space that supports your life, not just your aesthetic.
+            </p>
+        </div>
+    </header>
+
+    <main class="relative bg-[#F7F4EF]">
+        
+        <!-- 2. WHY THIS EXISTS (Editorial) -->
+        <section class="max-w-3xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+            <div class="reveal">
+                <span class="text-[#E0A456] text-xs uppercase tracking-widest font-semibold mb-3 block">Our Purpose</span>
+                <h2 class="text-3xl lg:text-4xl font-serif font-medium text-[#202329] mb-8 tracking-tight">Why We Built This</h2>
+                
+                <div class="prose prose-lg text-slate-600 font-light leading-loose space-y-6">
+                    <p>
+                        Searching for something as simple as a "good desk chair" or "calm lighting" has become surprisingly difficult. The internet is flooded with infinite choices, algorithm-driven trends, and reviews that feel more like sales pitches than genuine advice.
+                    </p>
+                    <p>
+                        We believed there was a need for a quieter corner of the internet. A place that prioritizes functionality over flashiness, and longevity over the latest fad.
+                    </p>
+                    <p>
+                        Nest N Thrive exists to solve the paradox of choice in the home space. We don't want to show you <em>every</em> option—we want to show you the <em>right</em> ones. Our goal is to help you make one good decision and then get back to living your life.
+                    </p>
+                </div>
+
+                <div class="mt-12 pt-12 border-t border-stone-200 flex items-center gap-4">
+                    <div class="h-px bg-slate-300 w-12"></div>
+                    <p class="text-serif italic text-lg text-[#202329]">"Your home should support your life—not compete with it."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. HOW WE CURATE (Grid) -->
+        <section class="bg-white border-y border-stone-100 py-20 lg:py-24">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="max-w-2xl mb-16 reveal">
+                    <h2 class="text-3xl font-serif font-medium text-[#202329] mb-4 tracking-tight">How We Curate</h2>
+                    <p class="text-slate-600 font-light">We take a research-first approach to every guide and collection.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 reveal delay-100">
+                    <!-- Value 1 -->
+                    <div class="group">
+                        <div class="w-12 h-12 rounded-full bg-[#F7F4EF] flex items-center justify-center mb-6 group-hover:bg-[#E0A456]/10 transition-colors">
+                            <i data-lucide="microscope" class="w-6 h-6 text-[#202329] group-hover:text-[#E0A456] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-[#202329] mb-3">Function Over Hype</h3>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">
+                            A product might look good on Instagram, but does it work on a Tuesday morning? We prioritize ergonomics, durability, and practical utility above pure aesthetics.
+                        </p>
+                    </div>
+
+                    <!-- Value 2 -->
+                    <div class="group">
+                        <div class="w-12 h-12 rounded-full bg-[#F7F4EF] flex items-center justify-center mb-6 group-hover:bg-[#E0A456]/10 transition-colors">
+                            <i data-lucide="scale" class="w-6 h-6 text-[#202329] group-hover:text-[#E0A456] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-[#202329] mb-3">Fewer, Better Choices</h3>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">
+                            Decision fatigue is real. Instead of listing "The Top 50 Sofas," we do the heavy lifting to narrow the field down to the few that truly matter for different needs.
+                        </p>
+                    </div>
+
+                    <!-- Value 3 -->
+                    <div class="group">
+                        <div class="w-12 h-12 rounded-full bg-[#F7F4EF] flex items-center justify-center mb-6 group-hover:bg-[#E0A456]/10 transition-colors">
+                            <i data-lucide="clock" class="w-6 h-6 text-[#202329] group-hover:text-[#E0A456] transition-colors"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-[#202329] mb-3">Designed for Longevity</h3>
+                        <p class="text-sm text-slate-600 font-light leading-relaxed">
+                            We favor items and ideas that age gracefully. We look for materials that last and design principles that won't feel outdated in six months.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. WHAT WE COVER -->
+        <section class="max-w-7xl mx-auto px-6 lg:px-8 py-20 lg:py-28">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center reveal">
+                <div>
+                    <h2 class="text-3xl font-serif font-medium text-[#202329] mb-6 tracking-tight">What You'll Find Here</h2>
+                    <p class="text-slate-600 font-light mb-8 leading-relaxed">
+                        Our content is organized to match how you actually think about your home—whether you're tackling a specific room or trying to achieve a specific feeling.
+                    </p>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 bg-white border border-stone-200 p-1.5 rounded-md shadow-sm">
+                                <i data-lucide="layout-grid" class="w-4 h-4 text-[#E0A456]"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[#202329] font-medium text-sm">Room Guides</h4>
+                                <p class="text-xs text-slate-500 font-light mt-1">Deep dives into equipping specific spaces like Home Offices, Living Rooms, and Entryways.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 bg-white border border-stone-200 p-1.5 rounded-md shadow-sm">
+                                <i data-lucide="target" class="w-4 h-4 text-[#E0A456]"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[#202329] font-medium text-sm">Goal-Based Collections</h4>
+                                <p class="text-xs text-slate-500 font-light mt-1">Curations centered on outcomes, such as "Improving Focus," "Better Sleep," or "Reducing Clutter."</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="mt-1 bg-white border border-stone-200 p-1.5 rounded-md shadow-sm">
+                                <i data-lucide="book-open" class="w-4 h-4 text-[#E0A456]"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-[#202329] font-medium text-sm">Practical How-Tos</h4>
+                                <p class="text-xs text-slate-500 font-light mt-1">Step-by-step instructions on setting up ergonomics, lighting, and organization systems.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="relative">
+                    <div class="aspect-[4/3] bg-stone-200 rounded-xl overflow-hidden relative z-10">
+                        <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&amp;fit=crop&amp;q=80&amp;w=1000" alt="Calm Interior" class="w-full h-full object-cover">
+                    </div>
+                    <!-- Decorative element -->
+                    <div class="absolute -bottom-6 -right-6 w-full h-full border border-stone-200 rounded-xl -z-0 hidden lg:block"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. TRANSPARENCY & FUNDING -->
+        <section class="bg-[#202329] py-20 text-white">
+            <div class="max-w-3xl mx-auto px-6 lg:px-8 text-center reveal">
+                <i data-lucide="shield-check" class="w-8 h-8 text-[#E0A456] mx-auto mb-6"></i>
+                <h2 class="text-2xl font-serif font-medium mb-6">How We Are Funded</h2>
+                
+                <div class="prose prose-invert prose-p:font-light prose-p:text-slate-400 mx-auto">
+                    <p class="mb-6">
+                        Transparency is the foundation of our relationship with you. Nest N Thrive is reader-supported. This means that when you purchase something through links on our site, we may earn an affiliate commission.
+                    </p>
+                    <p>
+                        However, our recommendations are never bought. We do not accept payment for favorable reviews, and we do not allow brands to influence our editorial content. If a product is recommended here, it is because we believe it adds genuine value to your home.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. CLOSING & CTA -->
+        <section class="py-24 bg-white border-t border-stone-100">
+            <div class="max-w-xl mx-auto px-6 text-center reveal">
+                <h2 class="text-3xl font-serif font-medium text-[#202329] mb-4">Build a better space, slowly.</h2>
+                <p class="text-slate-500 font-light mb-10 text-balance">
+                    Join our newsletter for a bi-weekly dose of calm design inspiration and practical upgrades. No spam, just clarity.
+                </p>
+                
+                <form class="flex flex-col sm:flex-row gap-3 max-w-sm mx-auto">
+                    <input type="email" placeholder="email@address.com" class="flex-1 bg-stone-50 border border-stone-200 rounded-full px-4 py-3 text-sm outline-none focus:border-[#E0A456] focus:ring-1 focus:ring-[#E0A456] transition-all" required="">
+                    <button type="submit" class="bg-[#202329] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-[#32363f] transition-colors shadow-lg shadow-stone-200/50">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER (Global) -->
+    <footer class="bg-[#202329] border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
+                            <span class="font-serif text-[#E0A456] text-sm font-bold">N</span>
+                        </div>
+                        <span class="text-white font-serif text-lg tracking-tight">Nest N Thrive</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed font-light">
+                        Helping you transform everyday homes into calm, functional spaces.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors font-light">Shop by Room</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors font-light">Shop by Goal</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors font-light">Latest Guides</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors font-light">About Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors font-light">Contact</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors font-light">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Follow</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-600 text-xs font-light">
+                    © 2023 Nest N Thrive. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body></html>

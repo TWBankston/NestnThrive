@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/common-mistakes",
+    "version": "1.0.0",
+    "title": "Common Mistakes",
+    "category": "nnt-blocks",
+    "icon": "warning",
+    "description": "Display a list of common mistakes to avoid.",
+    "keywords": ["mistakes", "avoid", "warning", "tips"],
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Common Mistakes to Avoid"
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

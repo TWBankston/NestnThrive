@@ -1,0 +1,42 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/product-pick",
+    "version": "1.0.0",
+    "title": "Product Pick",
+    "category": "nnt-blocks",
+    "icon": "products",
+    "description": "Display a single product recommendation.",
+    "keywords": ["product", "pick", "recommendation", "affiliate"],
+    "parent": ["nnt/quick-picks"],
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "productName": {
+            "type": "string",
+            "default": ""
+        },
+        "productUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "badge": {
+            "type": "string",
+            "default": ""
+        },
+        "imageUrl": {
+            "type": "string",
+            "default": ""
+        },
+        "imageId": {
+            "type": "number"
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

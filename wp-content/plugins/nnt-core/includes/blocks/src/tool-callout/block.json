@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/tool-callout",
+    "version": "1.0.0",
+    "title": "Tool Callout",
+    "category": "nnt-blocks",
+    "icon": "admin-tools",
+    "description": "Highlight a recommended tool or resource.",
+    "keywords": ["tool", "resource", "callout", "recommendation"],
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "toolName": {
+            "type": "string",
+            "default": ""
+        },
+        "toolUrl": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

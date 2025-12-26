@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/quick-picks",
+    "version": "1.0.0",
+    "title": "Quick Picks",
+    "category": "nnt-blocks",
+    "icon": "star-filled",
+    "description": "Display a grid of quick product recommendations.",
+    "keywords": ["quick picks", "products", "recommendations", "grid"],
+    "supports": {
+        "html": false,
+        "align": ["wide", "full"]
+    },
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Quick Picks"
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

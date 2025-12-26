@@ -1,0 +1,108 @@
+/**
+ * NNT Core Admin Metabox Styles
+ */
+
+.nnt-metabox-field {
+    margin-bottom: 16px;
+}
+
+.nnt-metabox-field label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.nnt-metabox-field .description {
+    color: #666;
+    font-style: italic;
+    margin-top: 4px;
+}
+
+.nnt-featured-section {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+.nnt-featured-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.nnt-featured-section h4 {
+    margin: 0 0 12px 0;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* Selected items list */
+.nnt-selected-posts,
+.nnt-selected-terms {
+    margin-bottom: 12px;
+}
+
+.nnt-selected-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #f6f7f7;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 4px;
+}
+
+.nnt-selected-item:hover {
+    background: #f0f0f1;
+}
+
+.nnt-drag-handle {
+    cursor: grab;
+    color: #999;
+    font-size: 14px;
+}
+
+.nnt-drag-handle:active {
+    cursor: grabbing;
+}
+
+.nnt-item-title {
+    flex: 1;
+    font-size: 13px;
+}
+
+.nnt-remove-item {
+    color: #d63638;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 4px;
+    background: none;
+    border: none;
+}
+
+.nnt-remove-item:hover {
+    color: #a00;
+}
+
+/* Dropdown selector */
+.nnt-add-post select,
+.nnt-add-term select {
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Sortable placeholder */
+.nnt-selected-item.ui-sortable-placeholder {
+    visibility: visible !important;
+    background: #e0e0e0;
+    border-style: dashed;
+}
+
+/* Sortable helper (dragging item) */
+.nnt-selected-item.ui-sortable-helper {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+

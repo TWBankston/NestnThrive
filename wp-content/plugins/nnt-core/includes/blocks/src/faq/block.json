@@ -1,0 +1,26 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/faq",
+    "version": "1.0.0",
+    "title": "FAQ",
+    "category": "nnt-blocks",
+    "icon": "editor-help",
+    "description": "A single FAQ item with Schema.org markup.",
+    "keywords": ["faq", "question", "answer", "help"],
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "question": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+

@@ -1,0 +1,615 @@
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nest N Thrive - Make your home a nest. Then thrive.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+    
+    <style>
+        /* Typography */
+        body { font-family: 'Inter', sans-serif; background-color: #F7F4EF; color: #202329; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+        /* Custom Scroll Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stagger Delays */
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+
+        /* Premium Hover States */
+        .card-hover {
+            transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .image-scale-hover {
+            transition: transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+        .group:hover .image-scale-hover {
+            transform: scale(1.03);
+        }
+
+        /* Button Hover */
+        .btn-gold {
+            background-color: #E0A456;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #E6B87A;
+            box-shadow: 0 4px 12px rgba(224, 164, 86, 0.3);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-[#E0A456] selection:text-white overflow-x-hidden">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed transition-all duration-300 bg-[#202329]/95 w-full z-50 border-white/5 border-b backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center border border-white/10">
+                         <span class="font-serif text-[#E0A456] text-xl font-bold">N</span>
+                    </div>
+                    <span class="text-white font-serif text-xl tracking-tight font-medium">Nest N Thrive</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">Shop by Room</a>
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">Shop by Goal</a>
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">Guides</a>
+                        <a href="#" class="text-slate-300 hover:text-[#E0A456] transition-colors text-sm font-medium">About</a>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="hidden md:block">
+                    <a href="#newsletter" class="bg-white/10 hover:bg-white/20 text-white px-5 py-2.5 rounded-full text-xs font-medium transition-all duration-300 border border-transparent hover:border-white/30">
+                        Join the List
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" class="text-slate-400 hover:text-white">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="relative bg-[#202329] pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-[#E0A456]/10 rounded-full blur-3xl opacity-60"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-[#E0A456]/5 rounded-full blur-3xl opacity-40"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="max-w-2xl reveal">
+                    <h1 class="text-5xl lg:text-7xl font-medium text-white tracking-tight leading-[1.1] mb-6">
+                        Make your home a nest. <br>
+                        <span class="text-[#E0A456] italic">Then thrive.</span>
+                    </h1>
+                    <p class="text-lg lg:text-xl text-slate-300 mb-10 font-light leading-relaxed max-w-lg">
+                        Calm, functional upgrades—curated by room and explained with clarity. Transform everyday spaces into sanctuaries.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                        <button class="btn-gold text-[#202329] px-8 py-4 rounded-full text-sm font-medium flex items-center justify-center gap-2 group">
+                            Shop by Room
+                            <i data-lucide="arrow-right" class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"></i>
+                        </button>
+                        <button class="bg-transparent border border-slate-600 text-white hover:border-[#E0A456] hover:text-[#E0A456] px-8 py-4 rounded-full text-sm font-medium transition-all duration-300 flex items-center justify-center">
+                            Browse Guides
+                        </button>
+                    </div>
+
+                    <p class="text-slate-500 text-xs tracking-wide pl-1 animate-pulse">
+                        Curated guides. No fluff. Just what works.
+                    </p>
+
+                    <!-- Micro Value Props -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-10 mt-6 border-t border-white/10 reveal delay-200">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="check-circle" class="w-5 h-5 text-[#E0A456] mt-0.5 opacity-80"></i>
+                            <span class="text-slate-400 text-xs leading-relaxed">Curated picks, not endless lists</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="star" class="w-5 h-5 text-[#E0A456] mt-0.5 opacity-80"></i>
+                            <span class="text-slate-400 text-xs leading-relaxed">Practical upgrades that feel premium</span>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="layout-grid" class="w-5 h-5 text-[#E0A456] mt-0.5 opacity-80"></i>
+                            <span class="text-slate-400 text-xs leading-relaxed">By room, by goal, by real life</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative reveal delay-200">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-black/50 aspect-[4/5] lg:aspect-square group">
+                        <!-- Replaced with a warm, lived-in living room interior -->
+                        <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&amp;fit=crop&amp;q=80&amp;w=1600" alt="Calm lived-in living room with natural light" class="object-cover w-full h-full transform transition-transform duration-[2s] scale-100 hover:scale-[1.02]">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#202329]/60 via-transparent to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-8 left-8 right-8">
+                            <div class="bg-white/10 backdrop-blur-md border border-white/20 p-5 rounded-xl shadow-lg">
+                                <p class="text-white text-sm font-serif italic tracking-wide">"A home that feels organized is a mind that feels clear."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP BY ROOM (Hub) -->
+    <section class="py-24 bg-[#F7F4EF]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <span class="text-[#E0A456] text-xs font-semibold tracking-widest uppercase mb-3 block">Hub Pages</span>
+                <h2 class="text-4xl font-medium text-[#202329] tracking-tight mb-4">Shop by Room</h2>
+                <p class="text-slate-600 text-lg font-light leading-relaxed">Start where you live—each room has unique needs and rhythms.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Room Card 1 -->
+                <a href="#" class="group block reveal delay-100">
+                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/917d6f93-fb36-439a-8c48-884b67b35381_1600w.jpg" class="object-cover w-full h-full image-scale-hover" alt="Bedroom with warm linens">
+                        <div class="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500"></div>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-stone-300 pb-3 group-hover:border-[#E0A456] transition-colors duration-300">
+                        <div>
+                            <h3 class="text-xl font-medium text-[#202329]">Bedroom</h3>
+                            <p class="text-sm text-slate-500 mt-1">Sleep better, wake brighter.</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-300 text-slate-400 flex items-center justify-center group-hover:bg-[#E0A456] group-hover:border-[#E0A456] group-hover:text-white transition-all duration-300">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Room Card 2 -->
+                <a href="#" class="group block reveal delay-200">
+                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full image-scale-hover" alt="Warm living room corner">
+                    </div>
+                    <div class="flex justify-between items-center border-b border-stone-300 pb-3 group-hover:border-[#E0A456] transition-colors duration-300">
+                        <div>
+                            <h3 class="text-xl font-medium text-[#202329]">Living Room</h3>
+                            <p class="text-sm text-slate-500 mt-1">The heart of the home.</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-300 text-slate-400 flex items-center justify-center group-hover:bg-[#E0A456] group-hover:border-[#E0A456] group-hover:text-white transition-all duration-300">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Room Card 3 -->
+                <a href="#" class="group block reveal delay-300">
+                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full image-scale-hover" alt="Clean spa bathroom">
+                    </div>
+                    <div class="flex justify-between items-center border-b border-stone-300 pb-3 group-hover:border-[#E0A456] transition-colors duration-300">
+                        <div>
+                            <h3 class="text-xl font-medium text-[#202329]">Bathroom</h3>
+                            <p class="text-sm text-slate-500 mt-1">Spa-like organization.</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-300 text-slate-400 flex items-center justify-center group-hover:bg-[#E0A456] group-hover:border-[#E0A456] group-hover:text-white transition-all duration-300">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Room Card 4 -->
+                <a href="#" class="group block reveal delay-100">
+                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/4734259a-bad7-422f-981e-ce01e79184f2_1600w.jpg" class="object-cover w-full h-full image-scale-hover" alt="Organized Kitchen">
+                    </div>
+                    <div class="flex justify-between items-center border-b border-stone-300 pb-3 group-hover:border-[#E0A456] transition-colors duration-300">
+                        <div>
+                            <h3 class="text-xl font-medium text-[#202329]">Kitchen</h3>
+                            <p class="text-sm text-slate-500 mt-1">Cook with clarity.</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-300 text-slate-400 flex items-center justify-center group-hover:bg-[#E0A456] group-hover:border-[#E0A456] group-hover:text-white transition-all duration-300">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Room Card 5 -->
+                <a href="#" class="group block reveal delay-200">
+                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full image-scale-hover" alt="Home Office Desk">
+                    </div>
+                    <div class="flex justify-between items-center border-b border-stone-300 pb-3 group-hover:border-[#E0A456] transition-colors duration-300">
+                        <div>
+                            <h3 class="text-xl font-medium text-[#202329]">Home Office</h3>
+                            <p class="text-sm text-slate-500 mt-1">Deep work starts here.</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-300 text-slate-400 flex items-center justify-center group-hover:bg-[#E0A456] group-hover:border-[#E0A456] group-hover:text-white transition-all duration-300">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Room Card 6 -->
+                <a href="#" class="group block reveal delay-300">
+                    <div class="relative overflow-hidden rounded-xl aspect-[4/3] mb-4 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?auto=format&amp;fit=crop&amp;q=80&amp;w=800" class="object-cover w-full h-full image-scale-hover" alt="Entryway Bench">
+                    </div>
+                    <div class="flex justify-between items-center border-b border-stone-300 pb-3 group-hover:border-[#E0A456] transition-colors duration-300">
+                        <div>
+                            <h3 class="text-xl font-medium text-[#202329]">Entryway</h3>
+                            <p class="text-sm text-slate-500 mt-1">First impressions matter.</p>
+                        </div>
+                        <div class="w-8 h-8 rounded-full border border-stone-300 text-slate-400 flex items-center justify-center group-hover:bg-[#E0A456] group-hover:border-[#E0A456] group-hover:text-white transition-all duration-300">
+                            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                        </div>
+                    </div>
+                </a>
+                
+                <!-- Expanded List -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-3 pt-8 flex flex-wrap justify-center gap-4 reveal">
+                    <a href="#" class="px-6 py-3 rounded-full border border-stone-300 bg-white hover:border-[#E0A456] hover:text-[#E0A456] transition-all duration-300 text-sm font-medium text-slate-600 shadow-sm hover:shadow-md">Pantry &amp; Storage</a>
+                    <a href="#" class="px-6 py-3 rounded-full border border-stone-300 bg-white hover:border-[#E0A456] hover:text-[#E0A456] transition-all duration-300 text-sm font-medium text-slate-600 shadow-sm hover:shadow-md">Garage &amp; Utility</a>
+                    <a href="#" class="px-6 py-3 rounded-full border border-stone-300 bg-white hover:border-[#E0A456] hover:text-[#E0A456] transition-all duration-300 text-sm font-medium text-slate-600 shadow-sm hover:shadow-md">Outdoor Living</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SHOP BY GOAL -->
+    <section class="py-24 bg-white border-y border-stone-100">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6 reveal">
+                <div class="max-w-xl">
+                    <h2 class="text-4xl font-medium text-[#202329] tracking-tight mb-3">Shop by Goal</h2>
+                    <p class="text-slate-500 font-light text-lg">Choose the outcome you want—we’ll guide you to the right setup and products.</p>
+                </div>
+                <a href="#" class="text-[#202329] hover:text-[#E0A456] font-medium text-sm border-b border-[#202329]/30 hover:border-[#E0A456] pb-0.5 transition-colors">View all goals</a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Goal Tile -->
+                <a href="#" class="group p-8 rounded-2xl bg-[#F7F4EF] border border-transparent hover:border-[#E0A456]/20 card-hover reveal delay-100">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform duration-300 text-[#E0A456]">
+                        <i data-lucide="boxes" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#202329] mb-2">Organization &amp; Storage</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Everything in its place. Solutions for clutter-free living.</p>
+                </a>
+
+                <!-- Goal Tile -->
+                <a href="#" class="group p-8 rounded-2xl bg-[#F7F4EF] border border-transparent hover:border-[#E0A456]/20 card-hover reveal delay-200">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform duration-300 text-[#E0A456]">
+                        <i data-lucide="sparkles" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#202329] mb-2">Cleaning &amp; Maintenance</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Tools that make upkeep effortless and satisfying.</p>
+                </a>
+
+                <!-- Goal Tile -->
+                <a href="#" class="group p-8 rounded-2xl bg-[#F7F4EF] border border-transparent hover:border-[#E0A456]/20 card-hover reveal delay-300">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform duration-300 text-[#E0A456]">
+                        <i data-lucide="lamp" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#202329] mb-2">Lighting &amp; Ambience</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Set the mood. Warm, functional lighting for every corner.</p>
+                </a>
+
+                <!-- Goal Tile -->
+                <a href="#" class="group p-8 rounded-2xl bg-[#F7F4EF] border border-transparent hover:border-[#E0A456]/20 card-hover reveal delay-100">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform duration-300 text-[#E0A456]">
+                        <i data-lucide="maximize" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#202329] mb-2">Small Space Solutions</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Maximize square footage without sacrificing style.</p>
+                </a>
+
+                <!-- Goal Tile -->
+                <a href="#" class="group p-8 rounded-2xl bg-[#F7F4EF] border border-transparent hover:border-[#E0A456]/20 card-hover reveal delay-200">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform duration-300 text-[#E0A456]">
+                        <i data-lucide="laptop" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#202329] mb-2">Work From Home</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Ergonomic setups for productivity and focus.</p>
+                </a>
+
+                <!-- Goal Tile -->
+                <a href="#" class="group p-8 rounded-2xl bg-[#F7F4EF] border border-transparent hover:border-[#E0A456]/20 card-hover reveal delay-300">
+                    <div class="w-14 h-14 bg-white rounded-xl flex items-center justify-center mb-6 shadow-sm group-hover:scale-105 transition-transform duration-300 text-[#E0A456]">
+                        <i data-lucide="wifi" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[#202329] mb-2">Smart Home Basics</h3>
+                    <p class="text-sm text-slate-500 leading-relaxed">Automate the little things for a smoother day.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURED GUIDES -->
+    <section class="py-24 bg-[#F7F4EF]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <h2 class="text-4xl font-medium text-[#202329] tracking-tight mb-12 border-b border-stone-300 pb-6 reveal">Popular Right Now</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                
+                <!-- Guide Card -->
+                <article class="group cursor-pointer reveal delay-100">
+                    <div class="overflow-hidden rounded-lg mb-5 bg-stone-200 aspect-[16/9] shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Desk Setup" class="w-full h-full object-cover image-scale-hover">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-[#E0A456]">Product Guide</span>
+                        <span class="text-xs text-slate-400">5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-[#202329] leading-tight mb-2 group-hover:text-[#E0A456] transition-colors">
+                        Best Standing Desks for Small Spaces
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2">Why we chose the Flexispot and Uplift models for apartments under 600 sq ft.</p>
+                    <span class="text-xs font-semibold text-[#202329] border-b border-[#202329] pb-0.5 group-hover:border-[#E0A456] group-hover:text-[#E0A456] transition-all">Read Guide</span>
+                </article>
+
+                <!-- Guide Card -->
+                <article class="group cursor-pointer reveal delay-200">
+                    <div class="overflow-hidden rounded-lg mb-5 bg-stone-200 aspect-[16/9] shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Bedroom Sleep" class="w-full h-full object-cover image-scale-hover">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-[#E0A456]">How-To</span>
+                        <span class="text-xs text-slate-400">7 min read</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-[#202329] leading-tight mb-2 group-hover:text-[#E0A456] transition-colors">
+                        Bedroom Upgrades That Actually Improve Sleep
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2">Beyond the mattress: blackout solutions, sound dampening, and amber lighting.</p>
+                    <span class="text-xs font-semibold text-[#202329] border-b border-[#202329] pb-0.5 group-hover:border-[#E0A456] group-hover:text-[#E0A456] transition-all">Read Guide</span>
+                </article>
+
+                <!-- Guide Card -->
+                <article class="group cursor-pointer reveal delay-300">
+                    <div class="overflow-hidden rounded-lg mb-5 bg-stone-200 aspect-[16/9] shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Cable Management" class="w-full h-full object-cover image-scale-hover">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-[#E0A456]">Tutorial</span>
+                        <span class="text-xs text-slate-400">10 min read</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-[#202329] leading-tight mb-2 group-hover:text-[#E0A456] transition-colors">
+                        Cable Management: A Clean Desk Setup Guide
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2">The exact ties, sleeves, and clips needed to banish the spaghetti monster forever.</p>
+                    <span class="text-xs font-semibold text-[#202329] border-b border-[#202329] pb-0.5 group-hover:border-[#E0A456] group-hover:text-[#E0A456] transition-all">Read Guide</span>
+                </article>
+
+                 <!-- Guide Card -->
+                 <article class="group cursor-pointer reveal delay-100">
+                    <div class="overflow-hidden rounded-lg mb-5 bg-stone-200 aspect-[16/9] shadow-sm">
+                        <img src="https://hoirqrkdgbmvpwutwuwj.supabase.co/storage/v1/object/public/assets/assets/c543a9e1-f226-4ced-80b0-feb8445a75b9_1600w.jpg" alt="Pantry Organization" class="w-full h-full object-cover image-scale-hover">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-[#E0A456]">Collections</span>
+                        <span class="text-xs text-slate-400">4 min read</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-[#202329] leading-tight mb-2 group-hover:text-[#E0A456] transition-colors">
+                        Pantry Organization Essentials (That Last)
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2">Ditch the flimsy plastic. Here are the air-tight, stackable containers worth the investment.</p>
+                    <span class="text-xs font-semibold text-[#202329] border-b border-[#202329] pb-0.5 group-hover:border-[#E0A456] group-hover:text-[#E0A456] transition-all">Read Guide</span>
+                </article>
+
+                <!-- Guide Card -->
+                <article class="group cursor-pointer reveal delay-200">
+                    <div class="overflow-hidden rounded-lg mb-5 bg-stone-200 aspect-[16/9] shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Ambient Lighting" class="w-full h-full object-cover image-scale-hover">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-[#E0A456]">Design</span>
+                        <span class="text-xs text-slate-400">6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-[#202329] leading-tight mb-2 group-hover:text-[#E0A456] transition-colors">
+                        Lighting that Makes a Room Feel Expensive
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2">Understanding color temperature and layering light for a high-end feel.</p>
+                    <span class="text-xs font-semibold text-[#202329] border-b border-[#202329] pb-0.5 group-hover:border-[#E0A456] group-hover:text-[#E0A456] transition-all">Read Guide</span>
+                </article>
+
+                <!-- Guide Card -->
+                <article class="group cursor-pointer reveal delay-300">
+                    <div class="overflow-hidden rounded-lg mb-5 bg-stone-200 aspect-[16/9] shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&amp;fit=crop&amp;q=80&amp;w=800" alt="Office Chair" class="w-full h-full object-cover image-scale-hover">
+                    </div>
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="text-[10px] font-bold tracking-widest uppercase text-[#E0A456]">Reviews</span>
+                        <span class="text-xs text-slate-400">8 min read</span>
+                    </div>
+                    <h3 class="text-xl font-medium text-[#202329] leading-tight mb-2 group-hover:text-[#E0A456] transition-colors">
+                        Best Office Chairs for Long Workdays
+                    </h3>
+                    <p class="text-slate-500 text-sm mb-4 line-clamp-2">Comparing Herman Miller alternatives and mid-range heroes.</p>
+                    <span class="text-xs font-semibold text-[#202329] border-b border-[#202329] pb-0.5 group-hover:border-[#E0A456] group-hover:text-[#E0A456] transition-all">Read Guide</span>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BRAND PHILOSOPHY -->
+    <section class="py-24 bg-[#202329] text-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 reveal">
+                <div>
+                    <h2 class="text-4xl font-medium tracking-tight mb-6">Thoughtful picks.<br>Clear guidance.</h2>
+                    <p class="text-slate-300 text-lg leading-relaxed max-w-md mb-8">
+                        The internet is noisy. We filter out the junk and focus on products that actually improve your daily routines. We believe a home should serve you, not the other way around.
+                    </p>
+                    <p class="text-[#E0A456] text-sm font-medium tracking-wide">
+                        Every guide is built to help you decide faster—and live better.
+                    </p>
+                </div>
+                <div class="grid gap-10">
+                    <div class="flex gap-5">
+                        <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                            <i data-lucide="wind" class="w-5 h-5 text-[#E0A456]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Calm</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">We prioritize designs that reduce visual clutter. Clean lines, neutral tones, and hidden organization.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                            <i data-lucide="settings-2" class="w-5 h-5 text-[#E0A456]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Function</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">It has to work. We look for items that solve specific problems without adding unnecessary complexity.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-5">
+                        <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                            <i data-lucide="award" class="w-5 h-5 text-[#E0A456]"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-medium mb-2">Quality</h4>
+                            <p class="text-slate-400 text-sm leading-relaxed">Buy once, enjoy longer. We favor materials that age well and brands that stand behind their work.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESET STRIP -->
+    <section class="py-20 bg-stone-100 border-t border-stone-200">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center reveal">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E0A456]/10 text-[#E0A456] text-xs font-semibold uppercase tracking-wider mb-6">
+                New Feature
+            </div>
+            <h2 class="text-3xl md:text-4xl font-medium text-[#202329] mb-4 tracking-tight">Moving? Resetting your space?</h2>
+            <p class="text-slate-600 mb-8 max-w-2xl mx-auto">We’re building step-by-step checklists for every room—so you can set up a home that feels good from day one, without the overwhelm.</p>
+            <button class="bg-[#202329] hover:bg-slate-800 text-white px-8 py-4 rounded-full text-sm font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
+                Get the Checklist
+            </button>
+        </div>
+    </section>
+
+    <!-- EMAIL SIGNUP -->
+    <section id="newsletter" class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-xl mx-auto px-6 relative z-10 text-center reveal">
+            <i data-lucide="mail" class="w-8 h-8 text-[#E0A456] mx-auto mb-6"></i>
+            <h2 class="text-3xl font-medium text-[#202329] mb-3 tracking-tight">A calmer home—one upgrade at a time.</h2>
+            <p class="text-slate-500 mb-8 text-sm">Occasional guides, room resets, and curated finds. No spam, ever.</p>
+            
+            <form class="flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Enter your email" class="flex-1 bg-stone-50 border border-stone-200 text-slate-900 text-sm rounded-lg focus:ring-1 focus:ring-[#E0A456] focus:border-[#E0A456] block w-full p-3.5 placeholder-slate-400 outline-none transition-all">
+                <button type="button" class="btn-gold text-[#202329] font-medium rounded-lg text-sm px-6 py-3.5 whitespace-nowrap">
+                    Join the list
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#202329] border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
+                            <span class="font-serif text-[#E0A456] text-sm font-bold">N</span>
+                        </div>
+                        <span class="text-white font-serif text-lg tracking-tight">Nest N Thrive</span>
+                    </div>
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        Helping you transform everyday homes into calm, functional spaces.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Explore</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors">Shop by Room</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors">Shop by Goal</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors">Latest Guides</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Company</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors">About Us</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors">Contact</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-[#E0A456] text-sm transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-medium text-sm mb-4">Follow</h4>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-600 text-xs">
+                    © 2023 Nest N Thrive. All rights reserved.
+                </p>
+                <p class="text-slate-600 text-xs max-w-md text-center md:text-right">
+                    As an Amazon Associate, we may earn from qualifying purchases. This supports our work at no extra cost to you.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+
+</body></html>

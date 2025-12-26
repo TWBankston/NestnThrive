@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "nnt/step",
+    "version": "1.0.0",
+    "title": "Step",
+    "category": "nnt-blocks",
+    "icon": "editor-ol",
+    "description": "Display a numbered step with title and content.",
+    "keywords": ["step", "number", "process", "how-to"],
+    "supports": {
+        "html": false
+    },
+    "attributes": {
+        "stepNumber": {
+            "type": "number",
+            "default": 1
+        },
+        "title": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "textdomain": "nnt-core",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css",
+    "render": "file:./render.php"
+}
+
