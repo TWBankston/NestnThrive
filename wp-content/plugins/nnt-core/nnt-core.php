@@ -44,6 +44,7 @@ function nnt_core_load_includes() {
         'includes/admin-metaboxes.php',
         'includes/blocks/blocks.php',
         'includes/blocks/register.php',
+        'includes/seeder.php',
     );
 
     foreach ( $includes as $file ) {
